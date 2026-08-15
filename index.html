@@ -1,0 +1,4653 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Her Special Day is Coming</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&family=Dancing+Script:wght@500;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --night-deep: #160B2E;
+      --night-mid: #2A1852;
+      --twilight: #5B3B8C;
+      --gold: #E8C87E;
+      --gold-soft: #F3DFA8;
+      --blush: #F2A9C0;
+      --cream: #FBF3E7;
+      --rose-pale: #3B0F28;
+      --rose-soft: #5C1839;
+      --rose-mid: #7E2249;
+      --rose-deep: #F2A9C0;
+      --berry-ink: #FBE3EE;
+      --parchment: #F6ECD8;
+      --parchment-deep: #EBDCB8;
+      --ink: #4A2E1E;
+      --ink-soft: #7A5A3E;
+      --seal: #A31E34;
+      --seal-dark: #7C1526;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      height: 100dvh;
+      background: var(--rose-pale);
+      overflow: hidden;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--night-deep);
+    }
+
+    .stage {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      margin: 0 auto;
+      overflow: hidden;
+      background:
+        radial-gradient(115% 55% at 50% -8%, rgba(242, 169, 192, .22), transparent 62%),
+        linear-gradient(165deg, var(--rose-pale) 0%, var(--rose-soft) 48%, var(--rose-mid) 100%);
+    }
+
+    .page1-flex,
+    .page2,
+    .page3 {
+      overflow-y: auto;
+      overflow-x: hidden;
+      justify-content: flex-start;
+      padding-top: 80px;
+      padding-bottom: 60px;
+    }
+
+    .page3-inner {
+      width: 100%;
+      max-width: 420px;
+      padding-bottom: 40px;
+    }
+
+    .page4 {
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* ---------- shared floating fx ---------- */
+    .floating-heart {
+      position: absolute;
+      color: #F2A9C0;
+      animation: floatHeart linear forwards;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    @keyframes floatHeart {
+      from {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(-120px) rotate(18deg);
+        opacity: 0;
+      }
+    }
+
+    .gold-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #E8C87E;
+      box-shadow: 0 0 10px #E8C87E;
+      animation: floatGold linear infinite;
+    }
+
+    @keyframes floatGold {
+      from {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+    }
+
+    .love-quote {
+      margin-top: 15px;
+      max-width: 320px;
+      font-size: 17px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, .65);
+      font-style: italic;
+    }
+
+    .quote-divider {
+      width: 34px;
+      height: 1px;
+      margin: 18px auto 14px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: .7;
+    }
+
+    .intro-stars {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .intro-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(38% 30% at 50% 38%, rgba(242, 169, 192, .18), transparent 70%);
+      animation: introGlowShift 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes introGlowShift {
+
+      0%,
+      100% {
+        opacity: .6;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.08);
+      }
+    }
+
+    /* ==========================
+       INTRO SCREEN
+    ========================== */
+
+    .intro-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      background:
+        radial-gradient(115% 55% at 50% -8%, rgba(242, 169, 192, .22), transparent 62%),
+        linear-gradient(165deg, var(--rose-pale) 0%, var(--rose-soft) 48%, var(--rose-mid) 100%);
+    }
+
+    .heart-medallion {
+      position: relative;
+      width: 132px;
+      height: 132px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .heart-ring {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(232, 200, 126, .4);
+      border-radius: 50%;
+      animation: ringExpand 2.8s ease-out infinite;
+    }
+
+    .heart-ring.delay {
+      animation-delay: 1.4s;
+    }
+
+    @keyframes ringExpand {
+      0% {
+        transform: scale(.72);
+        opacity: .85;
+      }
+
+      100% {
+        transform: scale(1.28);
+        opacity: 0;
+      }
+    }
+
+    .heart-medallion::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(246, 216, 255, .3), transparent 70%);
+      animation: pulseGlow 2.4s ease-in-out infinite;
+    }
+
+    .heart-svg {
+      position: relative;
+      width: 78px;
+      height: 70px;
+      filter: drop-shadow(0 10px 20px rgba(124, 21, 38, .45));
+      animation: heartBeat 1.7s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: .6;
+      }
+
+      50% {
+        transform: scale(1.3);
+        opacity: 1;
+      }
+    }
+
+    @keyframes heartBeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .intro-mark {
+      font-size: 11px;
+      letter-spacing: .5em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      opacity: .75;
+      margin-bottom: 26px;
+    }
+
+    .typing-name {
+      margin-top: 22px;
+      min-height: 70px;
+      color: var(--gold-soft);
+      font-size: clamp(26px, 8vw, 34px);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      text-align: center;
+      max-width: 320px;
+      text-shadow: 0 0 22px rgba(232, 200, 126, .35);
+    }
+
+    .typing-name .cursor {
+      display: inline-block;
+      width: 2px;
+      margin-left: 2px;
+      background: var(--gold-soft);
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .for-you {
+      margin-top: 14px;
+      color: var(--blush);
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      font-size: 18px;
+      opacity: .9;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .for-you::before,
+    .for-you::after {
+      content: "";
+      width: 18px;
+      height: 1px;
+      background: var(--blush);
+      opacity: .6;
+    }
+
+    .start-btn {
+      position: relative;
+      z-index: 999999;
+      margin-top: 80px;
+      padding: 16px 42px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #F3DFA8, #E8C87E);
+      color: #160B2E;
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: .4s;
+      box-shadow: 0 0 24px rgba(232, 200, 126, .45), 0 8px 20px rgba(0, 0, 0, .3);
+    }
+
+    .start-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 38px rgba(232, 200, 126, .85), 0 10px 24px rgba(0, 0, 0, .35);
+    }
+
+    .start-btn:active {
+      transform: scale(.96);
+    }
+
+    .start-btn .btn-deco {
+      display: inline-block;
+      font-size: 12px;
+      margin: 0 2px;
+    }
+
+    .start-btn .btn-deco.spin {
+      animation: decoSpin 3s linear infinite;
+    }
+
+    .start-btn .btn-deco.beat {
+      animation: decoBeat 1.1s ease-in-out infinite;
+    }
+
+    /* ---------- Starfield (page 1) ---------- */
+    .stars {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .star {
+      position: absolute;
+      background: var(--cream);
+      border-radius: 50%;
+      opacity: .6;
+      animation: twinkle 3.5s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: .15;
+        transform: scale(.8);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.15);
+      }
+    }
+
+    .moon {
+      position: absolute;
+      top: 5%;
+      right: 9%;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      z-index: 1;
+      background: radial-gradient(circle at 34% 32%, #FFFDF6 0%, #F3DFA8 55%, #E8C87E 100%);
+      box-shadow: 0 0 30px 6px rgba(232, 200, 126, .35), 0 0 60px 14px rgba(232, 200, 126, .12);
+      opacity: .9;
+    }
+
+    .moon::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle at 68% 62%, rgba(0, 0, 0, 0) 0%, rgba(160, 120, 60, .16) 60%, rgba(0, 0, 0, 0) 62%);
+    }
+
+    .shooting-star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 50%;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .shooting-star::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 70px;
+      height: 1px;
+      transform: translateY(-50%);
+      background: linear-gradient(90deg, rgba(251, 243, 231, 0), rgba(251, 243, 231, .9));
+    }
+
+    @keyframes shoot {
+      0% {
+        opacity: 0;
+        transform: translate(0, 0);
+      }
+
+      8% {
+        opacity: 1;
+      }
+
+      28% {
+        opacity: 0;
+        transform: translate(-160px, 120px);
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .drift {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .spark {
+      position: absolute;
+      bottom: -5%;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold-soft);
+      box-shadow: 0 0 6px 2px rgba(232, 200, 126, .6);
+      animation: rise linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: .9;
+      }
+
+      90% {
+        opacity: .5;
+      }
+
+      100% {
+        transform: translateY(-105vh) translateX(20px);
+        opacity: 0;
+      }
+    }
+
+    /* ---------- Page 1 layout shell ---------- */
+    .page1-flex {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(4px, 2vh, 20px);
+      padding: clamp(10px, 3vh, 24px) 20px;
+    }
+
+    /* ---------- Cake signature ---------- */
+    .feature-wrap {
+      position: relative;
+      flex: 0 0 auto;
+      margin-top: clamp(20px, 8vh, 40px);
+      width: clamp(190px, 56vw, 300px);
+      height: clamp(190px, 56vw, 300px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .halo {
+      position: absolute;
+      inset: -26px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(242, 169, 192, 0.10) 0%, rgba(232, 200, 126, 0.05) 45%, transparent 72%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: .8;
+      }
+
+      50% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    }
+
+    .cake-svg {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 10px 26px rgba(232, 200, 126, .4));
+    }
+
+    .flame {
+      transform-origin: 50% 100%;
+    }
+
+    .flame-glow {
+      filter: blur(4px);
+    }
+
+    .crumb {
+      animation: sparkle 2.4s ease-in-out infinite;
+    }
+
+    .crumb:nth-child(odd) {
+      animation-delay: .6s;
+    }
+
+    @keyframes sparkle {
+
+      0%,
+      100% {
+        opacity: .25;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* ---------- Content ---------- */
+    .content {
+      position: relative;
+      z-index: 4;
+      flex: 0 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px max(12px, env(safe-area-inset-bottom));
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: .42em;
+      color: var(--blush);
+      text-transform: uppercase;
+      opacity: .85;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      width: 16px;
+      height: 1px;
+      background: var(--blush);
+      opacity: .6;
+    }
+
+    .headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--cream);
+      font-size: clamp(30px, 8.4vw, 40px);
+      line-height: 1.12;
+      letter-spacing: .01em;
+    }
+
+    .headline .accent {
+      display: block;
+      color: var(--gold-soft);
+      font-size: clamp(34px, 9.6vw, 46px);
+      margin-top: 2px;
+      text-shadow: 0 0 26px rgba(232, 200, 126, .3);
+    }
+
+    .subtitle {
+      margin-top: 16px;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(251, 243, 231, .75);
+      max-width: 280px;
+    }
+
+    .subtitle em {
+      font-style: normal;
+      color: var(--gold-soft);
+    }
+
+    .name-tag {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(232, 200, 126, .3);
+      background: rgba(255, 255, 255, .04);
+      font-size: 11.5px;
+      letter-spacing: .05em;
+      color: var(--gold-soft);
+    }
+
+    /* ---------- Countdown ---------- */
+    .countdown {
+      margin-top: clamp(30px, 10vh, 50px);
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      gap: clamp(6px, 2vw, 10px);
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .unit {
+      width: clamp(52px, 16vw, 68px);
+      flex: 0 1 auto;
+      padding: clamp(10px, 2.5vh, 14px) 0 clamp(8px, 2vh, 10px);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02));
+      border: 1px solid rgba(232, 200, 126, .28);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .25), inset 0 0 12px rgba(232, 200, 126, .06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .unit::after {
+      content: "";
+      position: absolute;
+      top: -60%;
+      left: -140%;
+      width: 60%;
+      height: 220%;
+      background: linear-gradient(75deg, transparent, rgba(255, 255, 255, .16), transparent);
+      animation: unitShine 5s ease-in-out infinite;
+    }
+
+    @keyframes unitShine {
+      0% {
+        left: -140%;
+      }
+
+      45%,
+      100% {
+        left: 160%;
+      }
+    }
+
+    .unit-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 26px;
+      color: var(--gold-soft);
+      letter-spacing: .02em;
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+    }
+
+    .unit-num.tick {
+      animation: numTick .4s ease;
+    }
+
+    @keyframes numTick {
+      0% {
+        transform: translateY(-6px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .unit-label {
+      margin-top: 4px;
+      font-size: 9px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(251, 243, 231, .55);
+      position: relative;
+      z-index: 1;
+    }
+
+    .colon {
+      align-self: flex-start;
+      margin-top: 20px;
+      color: var(--gold-soft);
+      opacity: .5;
+      font-size: 20px;
+    }
+
+    .footer-note {
+      margin-top: 30px;
+      min-height: 14px;
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: rgba(251, 243, 231, .4);
+    }
+
+    .reveal-btn {
+      margin-top: 30px;
+      padding: 12px 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(232, 200, 126, .4);
+      background: transparent;
+      color: rgba(251, 243, 231, .45);
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      cursor: not-allowed;
+      transition: all .5s ease;
+      position: relative;
+      overflow: visible;
+    }
+
+    .reveal-btn.ready {
+      border: 1px solid var(--gold);
+      color: var(--night-deep);
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      font-weight: 600;
+      box-shadow: 0 0 22px rgba(232, 200, 126, .5), 0 6px 18px rgba(0, 0, 0, .35);
+      animation: fadeUp .8s ease, giftPulse 2.2s ease-in-out .8s infinite;
+      padding: 12px 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .reveal-btn.ready .btn-deco {
+      font-size: 13px;
+      display: inline-block;
+      animation: decoSpin 3s linear infinite;
+    }
+
+    .reveal-btn.ready .btn-deco.heart-deco {
+      animation: decoBeat 1.1s ease-in-out infinite;
+    }
+
+    @keyframes decoSpin {
+      0% {
+        transform: rotate(0deg) scale(1);
+      }
+
+      50% {
+        transform: rotate(180deg) scale(1.2);
+      }
+
+      100% {
+        transform: rotate(360deg) scale(1);
+      }
+    }
+
+    @keyframes decoBeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.3);
+      }
+    }
+
+    @keyframes giftPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 22px rgba(232, 200, 126, .5), 0 6px 18px rgba(0, 0, 0, .35);
+        transform: scale(1);
+      }
+
+      50% {
+        box-shadow: 0 0 34px rgba(232, 200, 126, .85), 0 8px 22px rgba(0, 0, 0, .4);
+        transform: scale(1.035);
+      }
+    }
+
+    .reveal-btn.ready:hover {
+      transform: translateY(-3px) scale(1.06);
+      box-shadow: 0 0 46px rgba(232, 200, 126, 1), 0 10px 26px rgba(0, 0, 0, .45);
+    }
+
+    .reveal-btn.ready:active {
+      transform: scale(.96);
+    }
+
+    .btn-sparkle {
+      position: absolute;
+      pointer-events: none;
+      color: var(--gold-soft);
+      font-size: 12px;
+      opacity: 0;
+      animation: sparklePop .8s ease-out forwards;
+      z-index: 50;
+    }
+
+    @keyframes sparklePop {
+      0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(.3) rotate(0deg);
+      }
+
+      25% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(var(--dx), var(--dy)) scale(1.1) rotate(180deg);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==========================
+       PAGE 2, 3, 4 SHARED SHELL
+    ========================== */
+    .page2,
+    .page3,
+    .page4 {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 28px;
+      background:
+        radial-gradient(115% 55% at 50% -8%, rgba(242, 169, 192, .22), transparent 62%),
+        linear-gradient(165deg, var(--rose-pale) 0%, var(--rose-soft) 48%, var(--rose-mid) 100%);
+      opacity: 0;
+      transition: opacity .9s ease;
+      overflow: hidden;
+    }
+
+    .page2.visible,
+    .page3.visible,
+    .page4.visible {
+      display: flex;
+      opacity: 1;
+    }
+
+    .page-progress {
+      position: absolute;
+      top: max(18px, env(safe-area-inset-top));
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 6;
+      display: flex;
+      gap: 7px;
+    }
+
+    .page-progress span {
+      width: 16px;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .22);
+      transition: background .4s ease, width .4s ease;
+    }
+
+    .page-progress span.done {
+      background: var(--gold-soft);
+      width: 22px;
+    }
+
+    .page-fx {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .page-star {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--gold-soft);
+      box-shadow: 0 0 7px 1px rgba(232, 200, 126, .55);
+      opacity: 0;
+      animation: twinkle ease-in-out infinite;
+    }
+
+    .sparkle-star {
+      position: absolute;
+      color: var(--gold);
+      opacity: 0;
+      line-height: 1;
+      text-shadow: 0 0 6px rgba(232, 200, 126, .6);
+      animation: twinkle ease-in-out infinite;
+    }
+
+    .page-heart {
+      position: absolute;
+      bottom: -8%;
+      line-height: 1;
+      color: var(--rose-deep);
+      text-shadow: 0 0 8px rgba(185, 98, 143, .35);
+      opacity: 0;
+      animation: pageHeartRise linear forwards;
+    }
+
+    @keyframes pageHeartRise {
+      0% {
+        transform: translateY(0) scale(.82) rotate(-4deg);
+        opacity: 0;
+      }
+
+      12% {
+        opacity: .95;
+      }
+
+      80% {
+        opacity: .75;
+      }
+
+      100% {
+        transform: translateY(-112vh) scale(1.08) rotate(4deg);
+        opacity: 0;
+      }
+    }
+
+    .page2-inner,
+    .page3-inner,
+    .page4-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page2-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(24px, 6.4vw, 30px);
+      letter-spacing: .08em;
+      text-transform: none;
+      color: var(--gold-soft);
+      text-shadow: 0 0 18px rgba(232, 200, 126, .55), 0 2px 10px rgba(0, 0, 0, .35);
+      opacity: 1;
+      margin-bottom: 22px;
+      animation: fadeUp .9s ease, giftHintPulse 2.6s ease-in-out infinite;
+    }
+
+    .gift-scene {
+      position: relative;
+      width: 230px;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .gift-svg {
+      position: relative;
+      width: 210px;
+      height: 230px;
+      filter: drop-shadow(0 16px 32px rgba(0, 0, 0, .35));
+      transition: transform .25s ease;
+    }
+
+    .gift-scene:hover .gift-svg {
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    .gift-lid {
+      transform-origin: 30px 108px;
+      transition: transform .7s cubic-bezier(.34, 1.56, .64, 1), opacity .7s ease;
+    }
+
+    .gift-scene.opened .gift-lid {
+      transform: translate(6px, -82px) rotate(-38deg);
+      opacity: 0;
+    }
+
+    .gift-glow-burst {
+      opacity: 0;
+      transform: scale(.3);
+      transform-origin: 105px 118px;
+      transition: transform .8s ease, opacity .8s ease;
+    }
+
+    .gift-scene.opened .gift-glow-burst {
+      opacity: 0;
+      transform: scale(2.6);
+    }
+
+    .gift-scene.opened .gift-box-body {
+      animation: boxShake .5s ease;
+    }
+
+    @keyframes boxShake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20% {
+        transform: translateX(-3px);
+      }
+
+      40% {
+        transform: translateX(3px);
+      }
+
+      60% {
+        transform: translateX(-2px);
+      }
+
+      80% {
+        transform: translateX(2px);
+      }
+    }
+
+    .gift-scene:not(.opened) .gift-lid {
+      animation: lidHint 2.4s ease-in-out infinite;
+    }
+
+    @keyframes lidHint {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-4px) rotate(-1.5deg);
+      }
+    }
+
+    .page2-sub {
+      margin-top: 28px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      font-size: clamp(16px, 4.4vw, 18px);
+      line-height: 1.4;
+      color: rgba(251, 227, 238, .88);
+      max-width: 280px;
+      animation: giftHintPulse 2s ease-in-out infinite;
+    }
+
+    .tap-hint {
+      margin-top: 10px;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(251, 227, 238, .45);
+    }
+
+    /* ---------- VINTAGE BOTANICAL FLORAL CIRCLES LAYER ---------- */
+    .flower-burst-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .flower-circle {
+      position: absolute;
+      width: var(--size, 150px);
+      height: var(--size, 150px);
+      top: var(--start-y, 50%);
+      left: var(--start-x, 50%);
+      margin-left: calc(-1 * var(--size, 150px) / 2);
+      margin-top: calc(-1 * var(--size, 150px) / 2);
+      border-radius: 50%;
+      background-image: var(--flower-img, url('pink_rose.jpg'));
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), inset 0 0 0 2.5px rgba(255, 255, 255, 0.45);
+      opacity: 0;
+      filter: blur(9px);
+      will-change: transform, opacity, filter;
+      transform-origin: center center;
+      transform: translate(0, 0) scale(0.05) rotate(0deg);
+      transition:
+        transform 1.5s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 1.15s ease-out,
+        filter 1.15s ease-out;
+    }
+
+    .flower-circle.popped {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translate(var(--tx), var(--ty)) scale(var(--scale, 1)) rotate(var(--rot, 0deg));
+    }
+
+    /* Gentle idle drift once a flower has settled, so the screen feels
+       alive instead of static between the entrance and exit. */
+    .flower-circle.swaying {
+      animation: flowerSway var(--sway-dur, 4.5s) ease-in-out infinite alternate;
+    }
+
+    @keyframes flowerSway {
+      from {
+        transform: translate(var(--tx), var(--ty)) scale(var(--scale, 1)) rotate(var(--rot, 0deg));
+      }
+
+      to {
+        transform: translate(calc(var(--tx) + var(--sway-x, 8px)), calc(var(--ty) + var(--sway-y, 8px))) scale(var(--scale, 1)) rotate(calc(var(--rot, 0deg) + 3deg));
+      }
+    }
+
+    .flower-circle.parting-left {
+      transition:
+        transform 3.2s cubic-bezier(.76, 0, .24, 1),
+        opacity .5s ease 2.7s;
+
+      transform:
+        translate(-160vw, var(--ty)) scale(var(--scale, 1)) rotate(-8deg) !important;
+
+      opacity: 0;
+    }
+
+    .flower-circle.parting-right {
+      transition:
+        transform 3.2s cubic-bezier(.76, 0, .24, 1),
+        opacity .5s ease 2.7s;
+
+      transform:
+        translate(160vw, var(--ty)) scale(var(--scale, 1)) rotate(8deg) !important;
+
+      opacity: 0;
+    }
+
+    @keyframes giftHintPulse {
+
+      0%,
+      100% {
+        opacity: .55;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* ==========================
+       PAGE 3 — LOVE LETTER INTRO
+    ========================== */
+    .page3-eyebrow {
+      font-size: 11px;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--berry-ink);
+      opacity: .85;
+      animation: fadeUp .9s ease;
+    }
+
+    .page3-title {
+      margin-top: 18px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(38px, 11vw, 54px);
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--berry-ink) 0%, var(--rose-deep) 45%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: fadeUp 1.1s ease .1s both;
+    }
+
+    .page3-sub {
+      margin-top: 16px;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: .06em;
+      color: rgba(251, 227, 238, .72);
+      animation: fadeUp 1.1s ease .25s both;
+    }
+
+    .letter-icon-wrap {
+      margin-top: 34px;
+      position: relative;
+      width: 84px;
+      height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeUp 1.1s ease .35s both;
+    }
+
+    .letter-icon-ring {
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(232, 200, 126, .4);
+      border-radius: 50%;
+      animation: ringExpand 2.6s ease-out infinite;
+    }
+
+    .letter-icon-ring.delay {
+      animation-delay: 1.3s;
+    }
+
+    .letter-icon {
+      font-size: 38px;
+      animation: floatSlow 3s ease-in-out .5s infinite;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .3));
+    }
+
+    @keyframes floatSlow {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .read-btn {
+      margin-top: 34px;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #F3DFA8, #E8C87E);
+      color: #160B2E;
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-size: 13px;
+      cursor: pointer;
+      transition: .4s;
+      box-shadow: 0 0 22px rgba(232, 200, 126, .45);
+      animation: fadeUp 1.1s ease .45s both;
+    }
+
+    .read-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 38px rgba(232, 200, 126, .85);
+    }
+
+    .read-btn:active {
+      transform: scale(.96);
+    }
+
+    /* ===== PHOTO GALLERY ===== */
+
+    .photo-gallery {
+      margin-top: 70px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: nowrap;
+    }
+
+    .photo-frame {
+      width: 110px;
+      height: 170px;
+      background: #fff;
+      padding: 8px 8px 38px 8px;
+      /* bawah lebih besar */
+      border-radius: 6px;
+    }
+
+    .photo-frame:hover {
+      transform: translateY(-5px) rotate(-1deg);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .photo-caption {
+      /* margin-top: 2px; */
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 14px;
+      color: #222;
+      font-weight: 700;
+    }
+
+    .photo-gallery>div:nth-child(1) {
+      transform: rotate(-6deg) translateY(8px);
+    }
+
+    .photo-gallery>div:nth-child(2) {
+      transform: rotate(0deg);
+    }
+
+    .photo-gallery>div:nth-child(3) {
+      transform: rotate(6deg) translateY(8px);
+    }
+
+    /* ==========================
+       PAGE 4 — THE LETTER
+    ========================== */
+    .page4 {
+      padding: 26px 22px 30px;
+    }
+
+    .page4-eyebrow {
+      font-size: 10.5px;
+      letter-spacing: .38em;
+      text-transform: uppercase;
+      color: rgba(251, 227, 238, .55);
+      margin-bottom: 14px;
+      animation: fadeUp .8s ease;
+    }
+
+    .seal-stage {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      width: 100%;
+      transition: opacity .5s ease, transform .5s ease;
+    }
+
+    .seal-stage.hidden {
+      opacity: 0;
+      transform: scale(.92);
+      pointer-events: none;
+      position: absolute;
+    }
+
+    .wax-seal {
+      position: relative;
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 34% 30%, #C9364F 0%, var(--seal) 55%, var(--seal-dark) 100%);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, .4), inset 0 -6px 10px rgba(0, 0, 0, .25), inset 0 4px 8px rgba(255, 255, 255, .18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform .3s ease;
+      animation: sealBreathe 3s ease-in-out infinite;
+    }
+
+    @keyframes sealBreathe {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.035);
+      }
+    }
+
+    .wax-seal:hover {
+      transform: scale(1.06);
+    }
+
+    .wax-seal .seal-glyph {
+      font-family: 'Dancing Script', cursive;
+      font-size: 34px;
+      color: rgba(255, 231, 200, .92);
+      transform: translateY(-2px);
+    }
+
+    .wax-seal.cracking {
+      animation: sealBreak .6s ease forwards;
+    }
+
+    @keyframes sealBreak {
+      0% {
+        transform: scale(1);
+      }
+
+      40% {
+        transform: scale(1.12) rotate(-3deg);
+      }
+
+      100% {
+        transform: scale(1.6) rotate(6deg);
+        opacity: 0;
+      }
+    }
+
+    .seal-hint {
+      margin-top: 22px;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(251, 227, 238, .55);
+      animation: giftHintPulse 2s ease-in-out infinite;
+    }
+
+    .letter-paper-wrap {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 340px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .letter-paper-wrap.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .letter-paper {
+      position: relative;
+      width: 100%;
+      max-height: 78vh;
+      max-height: 78dvh;
+      margin: auto;
+      padding: 30px 22px 26px;
+      border-radius: 4px 4px 14px 14px;
+      background:
+        repeating-linear-gradient(180deg, rgba(122, 90, 62, 0) 0px, rgba(122, 90, 62, 0) 27px, rgba(122, 90, 62, .08) 28px),
+        radial-gradient(120% 60% at 50% 0%, #FBF1DC 0%, var(--parchment) 55%, var(--parchment-deep) 100%);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .4), 0 2px 0 rgba(255, 255, 255, .5) inset;
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    .letter-paper::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .letter-paper::-webkit-scrollbar-thumb {
+      background: rgba(122, 90, 62, .35);
+      border-radius: 4px;
+    }
+
+    .letter-paper::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--gold), var(--blush), var(--gold));
+      border-radius: 4px 4px 0 0;
+    }
+
+    .letter-greeting {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 24px;
+      color: var(--seal-dark);
+      opacity: 0;
+    }
+
+    .letter-body p {
+      margin-top: 14px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 14.5px;
+      line-height: 1.85;
+      color: var(--ink);
+      opacity: 0;
+    }
+
+    .letter-body p.show,
+    .letter-greeting.show {
+      animation: inkFade .9s ease forwards;
+    }
+
+    @keyframes inkFade {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .letter-signature {
+      margin-top: 20px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 30px;
+      color: var(--seal-dark);
+      text-align: right;
+      opacity: 0;
+    }
+
+    .letter-signature.show {
+      animation: inkFade 1s ease forwards;
+    }
+
+    .letter-heart-stamp {
+      display: inline-block;
+      margin-top: 40px;
+      font-size: 13px;
+      color: var(--seal);
+      opacity: .7;
+    }
+
+    .page4-footer {
+      position: relative;
+      z-index: 2;
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0;
+      transition: opacity .8s ease;
+    }
+
+    .page4-footer.show {
+      opacity: 1;
+    }
+
+    .replay-btn {
+      padding: 11px 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(232, 200, 126, .45);
+      background: rgba(255, 255, 255, .04);
+      color: var(--gold-soft);
+      font-family: 'Jost', sans-serif;
+      font-size: 11.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .replay-btn:hover {
+      background: rgba(232, 200, 126, .12);
+      transform: translateY(-2px);
+    }
+
+    .page4-caption {
+      font-size: 10.5px;
+      letter-spacing: .08em;
+      color: rgba(251, 227, 238, .4);
+    }
+
+    @media (max-width:360px) {
+      .subtitle {
+        font-size: 14px;
+      }
+
+      .wax-seal {
+        width: 92px;
+        height: 92px;
+      }
+    }
+
+    @media (max-height: 700px) {
+      .subtitle {
+        margin-top: 8px;
+        font-size: 13px;
+      }
+
+      .name-tag {
+        margin-top: 8px;
+        padding: 5px 12px;
+      }
+
+      .countdown {
+        margin-top: 12px;
+      }
+
+      .reveal-btn {
+        margin-top: 12px;
+      }
+
+      .letter-paper {
+        max-height: 68dvh;
+        padding: 22px 18px 18px;
+      }
+
+      .wax-seal {
+        width: 84px;
+        height: 84px;
+      }
+    }
+
+    @media (max-height: 560px) {
+      .page1-flex {
+        gap: 2px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+    }
+
+
+    /* ==========================
+   PAGE 5 - OUR MEMORIES
+========================== */
+
+    .page5 {
+      position: absolute;
+      inset: 0;
+      z-index: 11;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+      padding: 90px 20px 40px;
+      background:
+        radial-gradient(115% 55% at 50% -8%, rgba(242, 169, 192, .22), transparent 62%),
+        linear-gradient(165deg, var(--rose-pale) 0%, var(--rose-soft) 48%, var(--rose-mid) 100%);
+    }
+
+    .page5.visible {
+      display: flex;
+    }
+
+    .page5-inner {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .memory-gallery {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      justify-items: center;
+    }
+
+    .memory-frame {
+      width: 150px;
+      background: #fff;
+      padding: 10px 10px 15px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+      transform: none;
+    }
+
+    /* HAPUS kemiringan */
+    .memory-frame:nth-child(odd),
+    .memory-frame:nth-child(even) {
+      transform: none;
+    }
+
+    .memory-frame:hover {
+      transform: scale(1.05);
+    }
+
+    .memory-frame img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    .memory-caption {
+      margin-top: 2px;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 18px;
+      color: #333;
+      font-weight: 700;
+    }
+
+
+    /* ==========================
+   PAGE 6 - SPECIAL PLAYLIST
+========================== */
+
+    .page6 {
+      position: absolute;
+      inset: 0;
+      z-index: 12;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+      padding: 70px 20px 0px;
+
+      background:
+        radial-gradient(100% 50% at 50% 0%,
+          rgba(242, 169, 192, .20),
+          transparent 70%),
+        linear-gradient(165deg,
+          #4b263c 0%,
+          #603248 50%,
+          #6f3b55 100%);
+    }
+
+    .page6.visible {
+      display: flex;
+    }
+
+    .page6-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 430px;
+    }
+
+    /* ---------- Header ---------- */
+
+    .playlist-brand {
+      text-align: center;
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, .35);
+      font-size: 11px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+
+    .playlist-brand span {
+      color: #f2c75c;
+      margin-right: 5px;
+    }
+
+    .playlist-title {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 10vw, 52px);
+      font-weight: 400;
+      color: rgba(255, 242, 247, .95);
+      margin-top: 18px;
+    }
+
+    .playlist-subtitle {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255, 235, 243, .42);
+    }
+
+    /* ---------- Player Card ---------- */
+
+    .music-player-card {
+      margin-top: 65px;
+      width: 100%;
+      padding: 20px 18px 20px;
+
+      border: 1px solid rgba(255, 210, 230, .18);
+      border-radius: 26px;
+
+      background:
+        linear-gradient(145deg,
+          rgba(255, 255, 255, .08),
+          rgba(255, 255, 255, .025));
+
+      box-shadow:
+        0 20px 45px rgba(0, 0, 0, .28),
+        inset 0 1px 0 rgba(255, 255, 255, .10);
+
+      backdrop-filter: blur(12px);
+    }
+
+    /* ---------- Album ---------- */
+
+    .album-art-wrap {
+      width: 150px;
+      height: 150px;
+      margin: 5px auto 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+    }
+
+    .album-art {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+
+      background:
+        radial-gradient(circle at 48% 45%,
+          rgba(255, 210, 235, .75) 0%,
+          rgba(196, 89, 137, .75) 25%,
+          rgba(108, 40, 72, .95) 70%,
+          rgba(58, 24, 43, 1) 100%);
+
+      box-shadow:
+        0 15px 35px rgba(0, 0, 0, .35),
+        inset 0 0 30px rgba(255, 180, 215, .20);
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .album-art::before {
+      content: "";
+      position: absolute;
+      inset: 20px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(circle,
+          rgba(255, 224, 241, .85) 0%,
+          rgba(255, 150, 200, .25) 8%,
+          transparent 35%);
+
+      filter: blur(2px);
+    }
+
+    .album-art::after {
+      content: "✿";
+      position: absolute;
+
+      right: 18px;
+      bottom: 40px;
+
+      font-size: 28px;
+      color: rgba(255, 245, 250, .85);
+
+      text-shadow: 0 0 10px rgba(255, 220, 240, .7);
+    }
+
+    .album-art.playing {
+      animation: albumSpin 12s linear infinite;
+    }
+
+    @keyframes albumSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ---------- Song Information ---------- */
+
+    .current-song-title {
+      margin-top: 25px;
+
+      text-align: center;
+
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: rgba(255, 244, 248, .95);
+    }
+
+    .current-song-artist {
+      margin-top: 5px;
+
+      text-align: center;
+
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255, 230, 240, .42);
+    }
+
+    /* ---------- Progress ---------- */
+
+    .music-progress-wrap {
+      margin-top: 38px;
+    }
+
+    .music-progress {
+      width: 100%;
+      height: 4px;
+
+      appearance: none;
+      -webkit-appearance: none;
+
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .15);
+
+      cursor: pointer;
+    }
+
+    .music-progress::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+
+      width: 13px;
+      height: 13px;
+
+      border-radius: 50%;
+      border: none;
+
+      background: #f28bb5;
+
+      box-shadow:
+        0 0 10px rgba(242, 139, 181, .7);
+    }
+
+    .music-progress::-moz-range-thumb {
+      width: 13px;
+      height: 13px;
+
+      border-radius: 50%;
+      border: none;
+
+      background: #f28bb5;
+    }
+
+    .music-times {
+      display: flex;
+      justify-content: space-between;
+
+      margin-top: 7px;
+
+      font-size: 10px;
+      color: rgba(255, 235, 243, .28);
+    }
+
+    /* ---------- Controls ---------- */
+
+    .music-controls {
+      margin-top: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 40px;
+    }
+
+    .music-control-btn {
+      width: 44px;
+      height: 44px;
+
+      border: none;
+      background: transparent;
+
+      color: rgba(255, 240, 247, .85);
+
+      font-size: 22px;
+
+      cursor: pointer;
+
+      transition: .25s ease;
+    }
+
+    .music-control-btn:hover {
+      transform: scale(1.12);
+      color: #fff;
+    }
+
+    .music-play-btn {
+      width: 68px;
+      height: 68px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(255, 220, 235, .22);
+
+      background:
+        linear-gradient(145deg,
+          rgba(211, 106, 155, .35),
+          rgba(128, 51, 91, .55));
+
+      color: #ffe9f3;
+
+      font-size: 25px;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, .25),
+        inset 0 0 15px rgba(255, 255, 255, .05);
+
+      transition: .25s ease;
+    }
+
+    .music-play-btn:hover {
+      transform: scale(1.06);
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, .35),
+        0 0 20px rgba(242, 139, 181, .2);
+    }
+
+    /* ---------- Playlist ---------- */
+
+    .playlist-list {
+      margin-top: 25px;
+      margin-bottom: 50px;
+      /* TAMBAHKAN INI */
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 10px;
+    }
+
+    .playlist-item {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+
+      padding: 14px 15px;
+
+      border-radius: 15px;
+
+      border: 1px solid rgba(255, 220, 235, .08);
+
+      background: rgba(255, 255, 255, .035);
+
+      cursor: pointer;
+
+      transition: .3s ease;
+    }
+
+    .playlist-item:hover {
+      background: rgba(255, 255, 255, .08);
+      transform: translateY(-2px);
+    }
+
+    .playlist-item.active {
+      background: rgba(220, 111, 160, .16);
+
+      border-color:
+        rgba(242, 139, 181, .30);
+
+      box-shadow:
+        0 5px 20px rgba(0, 0, 0, .15);
+    }
+
+    .song-number {
+      width: 35px;
+
+      font-size: 12px;
+
+      color: rgba(255, 235, 243, .30);
+    }
+
+    .song-info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .song-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+
+      color: rgba(255, 240, 247, .88);
+    }
+
+    .song-artist {
+      margin-top: 2px;
+
+      font-size: 11px;
+
+      color: rgba(255, 225, 238, .35);
+    }
+
+    .song-status {
+      width: 30px;
+
+      text-align: center;
+
+      font-size: 15px;
+
+      color: rgba(255, 210, 230, .55);
+    }
+
+    .playlist-item.active .song-status {
+      color: #f28bb5;
+      animation: songPulse 1s ease-in-out infinite;
+    }
+
+    @keyframes songPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.25);
+      }
+    }
+
+    /* ---------- Page 6 Button ---------- */
+
+    .playlist-next-btn {
+      display: block;
+
+      margin: 45px auto 5px;
+
+      padding: 14px 34px;
+
+      border-radius: 999px;
+
+      border: 1px solid rgba(242, 169, 192, .35);
+
+      background:
+        linear-gradient(135deg,
+          rgba(242, 169, 192, .16),
+          rgba(232, 200, 126, .10));
+
+      color: rgba(255, 235, 243, .75);
+
+      font-family: 'Jost', sans-serif;
+
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition: .3s ease;
+    }
+
+    .playlist-next-btn:hover {
+      transform: translateY(-3px);
+
+      background:
+        rgba(242, 169, 192, .20);
+    }
+
+    /* =========================================
+   PAGE 7 — BIRTHDAY WISHES
+========================================= */
+
+    .page7 {
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+
+      display: none;
+      flex-direction: column;
+      align-items: center;
+
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      padding: 55px 20px 80px;
+
+      background:
+        radial-gradient(115% 55% at 50% -8%,
+          rgba(242, 169, 192, .22),
+          transparent 62%),
+        linear-gradient(165deg,
+          var(--rose-pale) 0%,
+          var(--rose-soft) 48%,
+          var(--rose-mid) 100%);
+    }
+
+    .page7.visible {
+      display: flex;
+    }
+
+    .birthday-inner {
+      position: relative;
+      z-index: 3;
+
+      width: 100%;
+      max-width: 430px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ---------- Birthday Card ---------- */
+
+    .birthday-card {
+      position: relative;
+
+      width: 100%;
+
+      padding: 42px 30px 38px;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(145deg,
+          rgba(255, 255, 255, .14),
+          rgba(255, 255, 255, .055));
+
+      border: 1px solid rgba(255, 235, 250, .25);
+
+      box-shadow:
+        0 25px 60px rgba(25, 10, 40, .35),
+        inset 0 1px 0 rgba(255, 255, 255, .18);
+
+      backdrop-filter: blur(18px);
+
+      text-align: center;
+
+      animation: birthdayCardIn 1s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    @keyframes birthdayCardIn {
+
+      from {
+        opacity: 0;
+        transform:
+          translateY(35px) scale(.94);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0) scale(1);
+      }
+
+    }
+
+    /* ---------- Sparkle ---------- */
+
+    .birthday-sparkle {
+      position: absolute;
+
+      top: 18px;
+      right: 24px;
+
+      font-size: 20px;
+
+      color: rgba(255, 230, 245, .8);
+
+      animation: sparkleFloat 2.5s ease-in-out infinite;
+    }
+
+    @keyframes sparkleFloat {
+
+      0%,
+      100% {
+        opacity: .4;
+        transform: scale(.8) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.15) rotate(15deg);
+      }
+
+    }
+
+    /* ---------- Small Heading ---------- */
+
+    .birthday-eyebrow {
+      font-size: 9px;
+
+      letter-spacing: .34em;
+
+      color: rgba(255, 240, 250, .55);
+
+      text-transform: uppercase;
+
+      margin-bottom: 14px;
+    }
+
+    /* ---------- Main Title ---------- */
+
+    .birthday-title {
+      margin: 0;
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size: clamp(38px, 11vw, 52px);
+
+      font-weight: 600;
+
+      font-style: italic;
+
+      color: #fff4fa;
+
+      text-shadow:
+        0 3px 18px rgba(255, 220, 240, .22);
+    }
+
+    /* ---------- Decorative Line ---------- */
+
+    .birthday-line {
+      width: 75px;
+      height: 1px;
+
+      margin: 17px auto 20px;
+
+      background:
+        linear-gradient(90deg,
+          transparent,
+          rgba(255, 220, 240, .7),
+          transparent);
+    }
+
+    /* ---------- Greeting ---------- */
+
+    .birthday-greeting {
+      font-family:
+        'Dancing Script',
+        cursive;
+
+      font-size: 19px;
+
+      color: rgba(255, 235, 247, .92);
+
+      margin-bottom: 27px;
+    }
+
+    .birthday-greeting span {
+      color: #ffb8d8;
+
+      margin-left: 4px;
+
+      text-shadow:
+        0 0 12px rgba(255, 170, 210, .6);
+    }
+
+    /* ---------- Message ---------- */
+
+    .birthday-message {
+      max-width: 330px;
+
+      margin: 0 auto;
+
+      font-family:
+        'Cormorant Garamond',
+        serif;
+
+      font-size: 16px;
+
+      line-height: 1.7;
+
+      color: rgba(255, 244, 250, .78);
+    }
+
+    .birthday-message p {
+      margin-bottom: 17px;
+    }
+
+    .birthday-closing {
+      color: rgba(255, 235, 247, .9);
+    }
+
+    /* ---------- Heart ---------- */
+
+    .birthday-heart {
+      width: 48px;
+      height: 48px;
+
+      margin: 22px auto 14px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(circle,
+          rgba(255, 200, 225, .22),
+          rgba(255, 200, 225, .04));
+
+      border: 1px solid rgba(255, 220, 240, .2);
+
+      color: #ffd0e5;
+
+      font-size: 28px;
+
+      box-shadow:
+        0 0 25px rgba(255, 190, 220, .15);
+
+      animation:
+        heartBreathe 2.5s ease-in-out infinite;
+    }
+
+    @keyframes heartBreathe {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.12);
+      }
+
+    }
+
+    /* ---------- Signature ---------- */
+
+    .birthday-signature {
+      font-family:
+        'Dancing Script',
+        cursive;
+
+      font-size: 20px;
+
+      color: rgba(255, 230, 242, .85);
+
+      margin-top: 5px;
+    }
+
+    /* ---------- Bottom Text ---------- */
+
+    .birthday-date {
+      margin-top: 25px;
+
+      font-size: 8px;
+
+      letter-spacing: .28em;
+
+      color: rgba(255, 235, 247, .38);
+    }
+
+    /* =========================================
+   BIRTHDAY WISHES BUTTON
+========================================= */
+
+    .birthday-next-btn {
+      display: block;
+      margin: 55px auto 70px;
+      padding: 15px 38px;
+
+      border: 1px solid rgba(255, 220, 240, .35);
+      border-radius: 999px;
+
+      background:
+        linear-gradient(135deg,
+          rgba(255, 190, 225, .18),
+          rgba(205, 170, 255, .12));
+
+      color: rgba(255, 240, 250, .9);
+
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 25px rgba(0, 0, 0, .18),
+        inset 0 1px 0 rgba(255, 255, 255, .15);
+
+      backdrop-filter: blur(10px);
+
+      transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+    }
+
+
+    .one-more-btn {
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+
+    .birthday-next-btn:hover {
+      transform: translateY(-4px) scale(1.03);
+
+      background:
+        linear-gradient(135deg,
+          rgba(255, 190, 225, .28),
+          rgba(205, 170, 255, .22));
+
+      box-shadow:
+        0 14px 35px rgba(0, 0, 0, .28),
+        0 0 25px rgba(255, 190, 225, .15);
+    }
+
+    .birthday-next-btn:active {
+      transform: scale(.96);
+    }
+
+
+    /* =========================================
+       PAGE 8 — FINAL BIRTHDAY REVEAL
+    ========================================= */
+
+    .page8 {
+      position: absolute;
+      inset: 0;
+      z-index: 30;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 32px 24px 40px;
+      text-align: center;
+      background:
+        radial-gradient(70% 55% at 50% 42%, rgba(242, 169, 192, .18), transparent 70%),
+        radial-gradient(55% 45% at 50% 100%, rgba(205, 170, 255, .10), transparent 70%),
+        linear-gradient(165deg, #24132f 0%, #4b294f 52%, #6c3b61 100%);
+      opacity: 0;
+      transition: opacity .9s ease;
+    }
+
+    .page8.visible {
+      display: flex;
+      opacity: 1;
+    }
+
+    .page8 .page-fx {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .final-message {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 720px;
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .final-typing {
+      min-height: 1.25em;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(48px, 12vw, 86px);
+      line-height: 1.05;
+      font-weight: 600;
+      color: rgba(255, 249, 252, .95);
+      text-shadow: 0 0 26px rgba(255, 220, 240, .20);
+      letter-spacing: -.01em;
+    }
+
+    .final-typing .cursor {
+      display: inline-block;
+      width: 2px;
+      height: .82em;
+      margin-left: 5px;
+      vertical-align: -0.08em;
+      background: rgba(255, 245, 250, .9);
+      animation: blink 1s step-start infinite;
+    }
+
+    .final-subtitle {
+      margin-top: 34px;
+      max-width: 480px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(17px, 4.2vw, 23px);
+      line-height: 1.55;
+      color: rgba(255, 238, 247, .72);
+      font-style: italic;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .final-subtitle.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .final-signature {
+      margin-top: 18px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 4.5vw, 25px);
+      letter-spacing: .14em;
+      color: rgba(255, 226, 240, .82);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .final-signature.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .final-heart {
+      color: #ffbfdc;
+      margin-left: 7px;
+      text-shadow: 0 0 16px rgba(255, 175, 215, .65);
+      display: inline-block;
+      animation: heartBreathe 2s ease-in-out infinite;
+    }
+
+    .final-replay-btn {
+      position: relative;
+      z-index: 3;
+      margin-top: 55px;
+      padding: 13px 30px;
+      border: 1px solid rgba(255, 220, 240, .30);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .055);
+      color: rgba(255, 241, 249, .72);
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .20);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity .8s ease, transform .35s ease, background .35s ease;
+    }
+
+    .final-replay-btn.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .final-replay-btn:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 190, 225, .12);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .28);
+    }
+
+    .final-replay-btn:active {
+      transform: scale(.96);
+    }
+
+    @media (max-width: 500px) {
+      .final-message {
+        min-height: 290px;
+      }
+
+      .final-typing {
+        font-size: clamp(42px, 12vw, 66px);
+      }
+
+      .final-subtitle {
+        margin-top: 28px;
+      }
+
+      .final-replay-btn {
+        margin-top: 40px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .music-player-card {
+        padding: 25px 18px;
+      }
+
+      .album-art-wrap {
+        width: 180px;
+        height: 180px;
+      }
+
+      .album-art {
+        width: 165px;
+        height: 165px;
+      }
+
+      .music-controls {
+        gap: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="introScreen" class="intro-screen">
+    <div class="intro-stars" id="introStars"></div>
+    <div class="intro-glow"></div>
+    <div class="intro-mark">✦ ✦ ✦</div>
+
+    <div class="heart-medallion">
+      <div class="heart-ring"></div>
+      <div class="heart-ring delay"></div>
+      <svg class="heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="introHeartGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FDEBF2" />
+            <stop offset="50%" stop-color="#F2A9C0" />
+            <stop offset="100%" stop-color="#E8C87E" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M50 84C50 84 8 55 8 27C8 12 20 2 34 2C42 2 48 7 50 14C52 7 58 2 66 2C80 2 92 12 92 27C92 55 50 84 50 84Z"
+          fill="url(#introHeartGrad)" stroke="#FBF3E7" stroke-opacity=".4" stroke-width="1" />
+      </svg>
+    </div>
+
+    <h1 id="typingName" class="typing-name"><span class="cursor">&nbsp;</span></h1>
+    <div class="for-you">For Someone Special</div>
+
+    <div class="quote-divider"></div>
+    <p class="love-quote">
+      "Lihatlah, cantik engkau, manisku, sungguh cantik engkau, bagaikan merpati matamu." ~Kidung Agung 1:15~
+    </p>
+
+    <button id="startBtn" class="start-btn"><span class="btn-deco spin">✦</span>Open My Heart<span
+        class="btn-deco beat">♥</span></button>
+  </div>
+
+  <div class="stage" id="stage" style="display:none;">
+
+    <audio id="bgMusic" src="shape-of-my-heart_2.mp3" loop preload="auto"></audio>
+
+    <!-- ================= PAGE 1 : COUNTDOWN ================= -->
+    <div class="stars" id="stars"></div>
+    <div id="shootingStars"></div>
+    <div class="drift" id="drift"></div>
+
+    <div class="page1-flex">
+      <div class="moon"></div>
+      <div class="feature-wrap">
+        <div class="halo"></div>
+        <svg class="cake-svg" viewBox="0 -32 140 182" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="cakeTop" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FBF3E7" />
+              <stop offset="100%" stop-color="#F2A9C0" />
+            </linearGradient>
+            <linearGradient id="cakeMid" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#F8E3EC" />
+              <stop offset="100%" stop-color="#EFB9CE" />
+            </linearGradient>
+            <linearGradient id="cakeBase" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#F3DFA8" />
+              <stop offset="100%" stop-color="#E8C87E" />
+            </linearGradient>
+            <radialGradient id="flameGrad" cx="50%" cy="78%" r="75%">
+              <stop offset="0%" stop-color="#FFFBF0" />
+              <stop offset="45%" stop-color="#FFF3C4" />
+              <stop offset="80%" stop-color="#F3DFA8" />
+              <stop offset="100%" stop-color="#E8C87E" />
+            </radialGradient>
+            <linearGradient id="ribbonGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#E8C87E" />
+              <stop offset="100%" stop-color="#F2A9C0" />
+            </linearGradient>
+          </defs>
+
+          <ellipse cx="70" cy="132" rx="52" ry="6" fill="#F2A9C0" opacity=".3" />
+
+          <path class="crumb" d="M16 46c-3-3-8-1-8 3 0 3 4 6 8 9 4-3 8-6 8-9 0-4-5-6-8-3Z" fill="#F2A9C0"
+            opacity=".8" />
+          <path class="crumb"
+            d="M122 40c-2.4-2.4-6.4-.8-6.4 2.4 0 2.4 3.2 4.8 6.4 7.2 3.2-2.4 6.4-4.8 6.4-7.2 0-3.2-4-4.8-6.4-2.4Z"
+            fill="#F3DFA8" opacity=".85" />
+
+          <rect x="64" y="10" width="12" height="26" rx="3" fill="#FBF3E7" />
+          <rect x="64" y="10" width="4" height="26" fill="#F2A9C0" opacity=".5" />
+          <line x1="70" y1="10" x2="70" y2="2" stroke="#8A6A46" stroke-width="1.3" stroke-linecap="round" />
+          <ellipse class="flame-glow" cx="70" cy="-8" rx="15" ry="17" fill="url(#flameGrad)" opacity=".3" />
+          <path class="flame" d="M70 -20 C 77 -12, 80 -4, 70 2 C 60 -4, 63 -12, 70 -20 Z" fill="url(#flameGrad)" />
+
+          <rect x="46" y="38" width="48" height="28" rx="10" fill="url(#cakeTop)" />
+          <circle cx="50" cy="38" r="3.4" fill="#FBF3E7" />
+          <circle cx="60" cy="37" r="3.4" fill="#FBF3E7" />
+          <circle cx="70" cy="36.5" r="3.6" fill="#FBF3E7" />
+          <circle cx="80" cy="37" r="3.4" fill="#FBF3E7" />
+          <circle cx="90" cy="38" r="3.4" fill="#FBF3E7" />
+
+          <rect x="30" y="66" width="80" height="32" rx="11" fill="url(#cakeMid)" />
+          <circle cx="34" cy="66" r="3.8" fill="#FBF3E7" />
+          <circle cx="47" cy="65" r="3.8" fill="#FBF3E7" />
+          <circle cx="60" cy="64.4" r="4" fill="#FBF3E7" />
+          <circle cx="73" cy="65" r="3.8" fill="#FBF3E7" />
+          <circle cx="86" cy="65" r="3.8" fill="#FBF3E7" />
+          <circle cx="99" cy="66" r="3.8" fill="#FBF3E7" />
+          <path d="M32 82 q8-6 16 0 t16 0 t16 0 t16 0" stroke="#FBF3E7" stroke-width="2" fill="none" opacity=".55" />
+
+          <rect x="14" y="98" width="112" height="34" rx="12" fill="url(#cakeBase)" />
+          <rect x="14" y="112" width="112" height="9" fill="url(#ribbonGrad)" opacity=".85" />
+          <path d="M62 112 l8 4.5 l-8 4.5 l3-4.5 Z" fill="#FBF3E7" opacity=".9" />
+          <path d="M78 112 l-8 4.5 l8 4.5 l-3-4.5 Z" fill="#FBF3E7" opacity=".9" />
+
+          <path d="M46 38 q4 12 -2 18" stroke="#F2A9C0" stroke-width="3" fill="none" stroke-linecap="round"
+            opacity=".55" />
+          <path d="M70 38 q3 14 0 20" stroke="#F2A9C0" stroke-width="3" fill="none" stroke-linecap="round"
+            opacity=".55" />
+          <path d="M94 38 q-4 12 2 18" stroke="#F2A9C0" stroke-width="3" fill="none" stroke-linecap="round"
+            opacity=".55" />
+
+          <circle class="crumb" cx="8" cy="70" r="2.4" fill="#F3DFA8" />
+          <circle class="crumb" cx="132" cy="64" r="2.8" fill="#F2A9C0" />
+          <circle class="crumb" cx="20" cy="20" r="2" fill="#FBF3E7" />
+          <circle class="crumb" cx="118" cy="16" r="2.2" fill="#F3DFA8" />
+          <circle class="crumb" cx="6" cy="106" r="2" fill="#F2A9C0" />
+          <circle class="crumb" cx="134" cy="102" r="2.2" fill="#FBF3E7" />
+        </svg>
+      </div>
+
+      <div class="content">
+        <div class="eyebrow">A moment just for you</div>
+
+        <h1 class="headline">
+          Her Special Day
+          <span class="accent">Is Coming</span>
+        </h1>
+
+        <p class="subtitle">Sesuatu yang indah sedang <em>menunggumu</em>.</p>
+        <div class="name-tag">✦ Kheisya Ledyka Br. Karo</div>
+
+        <div class="countdown" id="countdown">
+          <div class="unit">
+            <div class="unit-num" id="days">00</div>
+            <div class="unit-label">Hari</div>
+          </div>
+          <div class="colon">:</div>
+          <div class="unit">
+            <div class="unit-num" id="hours">00</div>
+            <div class="unit-label">Jam</div>
+          </div>
+          <div class="colon">:</div>
+          <div class="unit">
+            <div class="unit-num" id="minutes">00</div>
+            <div class="unit-label">Menit</div>
+          </div>
+          <div class="colon">:</div>
+          <div class="unit">
+            <div class="unit-num" id="seconds">00</div>
+            <div class="unit-label">Detik</div>
+          </div>
+        </div>
+
+        <div class="footer-note" id="footerNote"></div>
+
+        <button class="reveal-btn" id="revealBtn" disabled>Tunggu Sampai Waktunya</button>
+      </div>
+    </div>
+
+    <!-- ================= PAGE 2 : GIFT BOX ================= -->
+    <div class="page2" id="page2">
+      <div class="page-progress"><span class="done"></span><span></span><span></span></div>
+      <div class="page-fx" id="page2Stars"></div>
+      <div class="page-fx" id="page2Hearts"></div>
+
+      <div class="page2-inner" id="page2Inner">
+        <div class="page2-eyebrow">Ada Sesuatu Untukmu</div>
+
+        <div class="gift-scene" id="giftScene">
+          <svg class="gift-svg" viewBox="0 0 210 230" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="giftBoxGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FFF6EA" />
+                <stop offset="55%" stop-color="#FBDCE9" />
+                <stop offset="100%" stop-color="#F0AFCB" />
+              </linearGradient>
+              <linearGradient id="giftLidGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#FDEBBE" />
+                <stop offset="55%" stop-color="#F0C471" />
+                <stop offset="100%" stop-color="#D89B4A" />
+              </linearGradient>
+              <linearGradient id="ribbonMainGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#E23F7B" />
+                <stop offset="50%" stop-color="#F0568F" />
+                <stop offset="100%" stop-color="#C81E5C" />
+              </linearGradient>
+              <linearGradient id="ribbonHighlightGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0" />
+                <stop offset="50%" stop-color="#FFFFFF" stop-opacity=".55" />
+                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+              </linearGradient>
+              <radialGradient id="giftBurstGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FFFBF0" stop-opacity=".95" />
+                <stop offset="55%" stop-color="#F3DFA8" stop-opacity=".45" />
+                <stop offset="100%" stop-color="#F3DFA8" stop-opacity="0" />
+              </radialGradient>
+              <radialGradient id="charmGrad" cx="35%" cy="30%" r="75%">
+                <stop offset="0%" stop-color="#FFE1EC" />
+                <stop offset="55%" stop-color="#F0568F" />
+                <stop offset="100%" stop-color="#C81E5C" />
+              </radialGradient>
+              <clipPath id="boxClip">
+                <rect x="45" y="134" width="120" height="82" rx="14" />
+              </clipPath>
+              <symbol id="sparkleStarSym" viewBox="-10 -10 20 20">
+                <path d="M0 -9 Q2 -2 9 0 Q2 2 0 9 Q-2 2 -9 0 Q-2 -2 0 -9 Z" fill="#F3DFA8" />
+              </symbol>
+              <symbol id="heartSym" viewBox="0 0 16 14">
+                <path
+                  d="M8 13C8 13 1 8.5 1 4.5C1 2 3 0.5 5 0.5C6.5 0.5 7.5 1.3 8 2.2C8.5 1.3 9.5 0.5 11 0.5C13 0.5 15 2 15 4.5C15 8.5 8 13 8 13Z"
+                  fill="#F2A9C0" />
+              </symbol>
+            </defs>
+
+            <ellipse cx="105" cy="216" rx="76" ry="10" fill="#000" opacity=".18" />
+
+            <circle class="gift-glow-burst" cx="105" cy="132" r="50" fill="url(#giftBurstGrad)" />
+
+            <g class="gift-box-body">
+              <rect x="45" y="134" width="120" height="82" rx="14" fill="url(#giftBoxGrad)" />
+              <rect x="45" y="134" width="120" height="82" rx="14" fill="none" stroke="#fff" stroke-opacity=".35" />
+              <g clip-path="url(#boxClip)" stroke="#fff" stroke-opacity=".28" stroke-width="1.2">
+                <path d="M45 148 L165 148 M45 164 L165 164 M45 180 L165 180 M45 196 L165 196" />
+                <path d="M61 134 L61 216 M77 134 L77 216 M129 134 L129 216 M145 134 L145 216" />
+              </g>
+              <use href="#heartSym" x="53" y="188" width="10" height="9" opacity=".55" />
+              <use href="#heartSym" x="147" y="188" width="10" height="9" opacity=".55" />
+              <use href="#heartSym" x="53" y="150" width="10" height="9" opacity=".5" />
+              <use href="#heartSym" x="147" y="150" width="10" height="9" opacity=".5" />
+              <rect x="95" y="134" width="20" height="82" fill="url(#ribbonMainGrad)" />
+              <rect x="93.5" y="134" width="2" height="82" fill="#F0C471" opacity=".9" />
+              <rect x="114.5" y="134" width="2" height="82" fill="#F0C471" opacity=".9" />
+              <rect x="99" y="134" width="4" height="82" fill="url(#ribbonHighlightGrad)" opacity=".6"
+                transform="skewX(-8)" />
+            </g>
+
+            <g class="gift-lid">
+              <rect x="30" y="106" width="150" height="30" rx="13" fill="url(#giftLidGrad)" />
+              <rect x="30" y="106" width="150" height="30" rx="13" fill="none" stroke="#fff" stroke-opacity=".3" />
+              <rect x="36" y="110" width="138" height="5" rx="2.5" fill="#fff" opacity=".28" />
+              <rect x="95" y="106" width="20" height="30" fill="url(#ribbonMainGrad)" />
+              <rect x="93.5" y="106" width="2" height="30" fill="#F0C471" opacity=".9" />
+              <rect x="114.5" y="106" width="2" height="30" fill="#F0C471" opacity=".9" />
+
+              <path d="M99 128 L99 158 L105 150 L111 158 L111 128 Z" fill="url(#ribbonMainGrad)" opacity=".97" />
+              <path d="M101 128 L101 150" stroke="#fff" stroke-opacity=".35" stroke-width="1.4" />
+
+              <path d="M105 112 C 78 84, 40 88, 46 112 C 50 130, 82 124, 105 112 Z" fill="url(#ribbonMainGrad)" />
+              <path d="M105 112 C 84 92, 56 94, 60 112 C 63 124, 86 120, 105 112 Z" fill="#fff" opacity=".22" />
+              <path d="M105 112 C 132 84, 170 88, 164 112 C 160 130, 128 124, 105 112 Z" fill="url(#ribbonMainGrad)" />
+              <path d="M105 112 C 126 92, 154 94, 150 112 C 147 124, 124 120, 105 112 Z" fill="#fff" opacity=".22" />
+
+              <circle cx="105" cy="113" r="12" fill="url(#giftLidGrad)" stroke="#fff" stroke-opacity=".5"
+                stroke-width="1.4" />
+              <circle cx="105" cy="113" r="5" fill="url(#ribbonMainGrad)" />
+
+              <line x1="105" y1="120" x2="105" y2="140" stroke="#E8C87E" stroke-width="1.6" />
+              <circle cx="105" cy="120" r="2.2" fill="#E8C87E" />
+              <path
+                d="M105 152C105 152 96 145.5 96 139.5C96 136.4 98.5 134 101.4 134C103.3 134 105 135.1 105 136.6C105 135.1 106.7 134 108.6 134C111.5 134 114 136.4 114 139.5C114 145.5 105 152 105 152Z"
+                fill="url(#charmGrad)" stroke="#fff" stroke-opacity=".5" stroke-width="1" />
+            </g>
+
+            <use href="#sparkleStarSym" x="6" y="26" width="20" height="20" class="crumb" />
+            <use href="#sparkleStarSym" x="176" y="18" width="24" height="24" class="crumb" />
+            <use href="#sparkleStarSym" x="4" y="128" width="16" height="16" class="crumb" />
+            <use href="#sparkleStarSym" x="186" y="150" width="18" height="18" class="crumb" />
+            <use href="#sparkleStarSym" x="96" y="0" width="16" height="16" class="crumb" />
+            <use href="#heartSym" x="22" y="70" width="16" height="14" class="crumb" opacity=".85" />
+            <use href="#heartSym" x="168" y="86" width="14" height="12" class="crumb" opacity=".8" />
+          </svg>
+        </div>
+
+        <p class="page2-sub" id="page2Sub">Klik untuk membuka hadiahnya yaaa pudannnn</p>
+        <div class="tap-hint" id="tapHint">Ketuk kadonya sayangg</div>
+      </div>
+    </div>
+
+    <!-- ================= FLOWER OVERLAY CONTAINER ================= -->
+    <div class="flower-burst-layer" id="flowerBurstLayer"></div>
+
+    <!-- ================= PAGE 3 : LOVE LETTER INTRO ================= -->
+    <div class="page3" id="page3">
+      <div class="page-progress"><span class="done"></span><span class="done"></span><span></span></div>
+      <div class="page-fx" id="page3Stars"></div>
+      <div class="page-fx" id="page3Hearts"></div>
+
+      <div class="page3-inner">
+        <div class="page3-eyebrow">A Love Letter For You</div>
+        <h1 class="page3-title">Your Special Day</h1>
+        <p class="page3-sub">Created with love, just for you.</p>
+        <div class="letter-icon-wrap">
+          <div class="letter-icon-ring"></div>
+          <div class="letter-icon-ring delay"></div>
+          <div class="letter-icon">💌</div>
+        </div>
+        <button class="read-btn" id="readBtn">Read My Letter</button>
+        <div class="photo-gallery">
+
+          <div>
+            <div class="photo-frame">
+              <img src="foto1.jpg" alt="Our Memory">
+              <div class="photo-caption">Pudankuuu ❤️</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="photo-frame">
+              <img src="foto2.jpg" alt="Beautiful Day">
+              <div class="photo-caption">cantikkuuu ✨</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="photo-frame">
+              <img src="foto3.jpg" alt="Special You">
+              <div class="photo-caption">borukuuu🌹</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= PAGE 4 : THE LETTER ================= -->
+    <div class="page4" id="page4">
+      <div class="page-progress"><span class="done"></span><span class="done"></span><span class="done"></span></div>
+      <div class="page-fx" id="page4Stars"></div>
+      <div class="page-fx" id="page4Hearts"></div>
+
+      <div class="page4-inner"
+        style="width:100%; min-height:100%; display:flex; flex-direction:column; align-items:center; padding-top:clamp(20px, 7vh, 40px); padding-bottom:16px;">
+        <div class="page4-eyebrow">
+          A Letter From My Heart
+        </div>
+
+        <div class="seal-stage" id="sealStage">
+          <div class="wax-seal" id="waxSeal">
+            <span class="seal-glyph">K</span>
+          </div>
+          <div class="seal-hint">Ketuk segel untuk membukanya</div>
+        </div>
+
+        <div class="letter-paper-wrap" id="letterPaperWrap">
+          <div class="letter-paper" id="letterPaper">
+            <p class="letter-greeting" id="lp0">Happy Birthday Pudankuu❤️</p>
+            <div class="letter-body">
+              <p id="lp1">Selamat ulang tahun yaa boruuu!! Tepat pada hari ini 15 Agustus 2026 hari yang paling spesial
+                karna hari ini adalah hari lahir orang yang paling istimewa di hidup abangg.
+              </p>
+              <p id="lp2">Terima kasih udah selalu ada, terima kasih udah bikin hari-hari abangg lebih bahagia, terima
+                kasih udah menjadi alasan abangg bisa tersenyum setiap hari. abangg bersyukur bisa ketemu sama sayangg
+                sampai saat ini sayanggg.
+              </p>
+              <p id="lp3">Di umur sayangg yang ke 16 tahun, abangg berdoa semoga segala sesuatu
+                yang baik selalu datang ke hidup sayangg, sehat selalu yaa pudann, panjang umur, dimudahkan segala
+                urusan sayangg,
+                dan semua impian serta cita-cita sayangg bisa tercapai yaa sayanggg. Aminn..</p>
+              <p id="lp4">Tetap jadi pribadi yang lebih baik, hebat dan kuat seperti sekarang yaa boruuu. Jangan lupa
+                kalau abangg disini selalu ada buat sayangg dalam keadaan apa pun itu.</p>
+              <p id="lp5">Sekali lagi, selamat ulang tahun yaa pudannnn, semoga hari ini penuh kebahagian dan tahun ini
+                menjadi tahun terbaik untukmu yaa boruuuu... </p>
+            </div>
+            <p class="letter-heart-stamp" id="lp7">♥ I love you, today, tomorrow, and always ♥</p>
+          </div>
+        </div>
+
+        <div class="page4-footer" id="page4Footer">
+          <button class="replay-btn" id="replayBtn">Our Memories</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= PAGE 5 : OUR MEMORIES ================= -->
+    <div class="page5" id="page5">
+
+      <div class="page-progress">
+        <span class="done"></span>
+        <span class="done"></span>
+        <span class="done"></span>
+        <span class="done"></span>
+      </div>
+
+      <div class="page-fx" id="page5Stars"></div>
+      <div class="page-fx" id="page5Hearts"></div>
+
+      <div class="page5-inner">
+
+        <div class="page3-eyebrow">Our Memories</div>
+        <h1 class="page3-title">Every Moment With You ❤️</h1>
+
+        <div class="memory-gallery">
+
+          <!-- 20 Polaroid -->
+          <div class="memory-frame"><img src="foto4.jpeg">
+            <div class="memory-caption">Memory 1</div>
+          </div>
+          <div class="memory-frame"><img src="foto5.jpeg">
+            <div class="memory-caption">Memory 2</div>
+          </div>
+
+          <div class="memory-frame"><img src="foto6.jpeg">
+            <div class="memory-caption">Memory 3</div>
+          </div>
+          <div class="memory-frame"><img src="foto7.jpeg">
+            <div class="memory-caption">Memory 4</div>
+          </div>
+
+          <div class="memory-frame"><img src="foto8.jpeg">
+            <div class="memory-caption">Memory 5</div>
+          </div>
+          <div class="memory-frame"><img src="foto9.jpeg">
+            <div class="memory-caption">Memory 6</div>
+          </div>
+
+          <div class="memory-frame"><img src="foto10.jpeg">
+            <div class="memory-caption">Memory 7</div>
+          </div>
+          <div class="memory-frame"><img src="foto11.jpeg">
+            <div class="memory-caption">Memory 8</div>
+          </div>
+
+          <div class="memory-frame"><img src="foto12.jpeg">
+            <div class="memory-caption">Memory 9</div>
+          </div>
+
+          <div class="memory-frame"><img src="foto14.jpeg">
+            <div class="memory-caption">Memory 10</div>
+          </div>
+
+          <div class="memory-frame"><img src="foto17.jpeg">
+            <div class="memory-caption">Memory 11</div>
+          </div>
+
+          <div class="memory-frame"><img src="foto18.jpeg">
+            <div class="memory-caption">Memory 12</div>
+          </div>
+
+          <div class="memory-frame"><img src="foto20.jpeg">
+            <div class="memory-caption">Memory 13</div>
+          </div>
+          <div class="memory-frame"><img src="foto21.jpeg">
+            <div class="memory-caption">Memory 14</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BUTTON MENUJU PAGE 6 -->
+      <button class="playlist-next-btn" id="playlistNextBtn">
+        ♫ special playlist
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- ================= PAGE 6 : SPECIAL PLAYLIST ================= -->
+  <div class="page6" id="page6">
+
+    <div class="page-fx" id="page6Stars"></div>
+    <div class="page-fx" id="page6Hearts"></div>
+
+    <div class="page6-inner">
+
+      <div class="playlist-brand">
+        <span>✿</span> OUR SONGS <span>—</span>
+      </div>
+
+      <h1 class="playlist-title">
+        Special Playlist
+      </h1>
+
+      <p class="playlist-subtitle">
+        Songs that always remind me of you
+      </p>
+
+      <!-- PLAYER -->
+      <div class="music-player-card">
+
+        <div class="album-art-wrap">
+          <div class="album-art" id="albumArt"></div>
+        </div>
+
+        <h2 class="current-song-title" id="currentSongTitle">
+          Shape Of My Heart
+        </h2>
+
+        <p class="current-song-artist" id="currentSongArtist">
+          Backstreet Boys
+        </p>
+
+        <div class="music-progress-wrap">
+
+          <input type="range" class="music-progress" id="musicProgress" min="0" max="100" value="0">
+
+          <div class="music-times">
+            <span id="currentTime">0:00</span>
+            <span id="duration">0:00</span>
+          </div>
+
+        </div>
+
+        <!-- CONTROL -->
+        <div class="music-controls">
+
+          <button class="music-control-btn" id="previousSongBtn" aria-label="Previous song">
+            ⏮
+          </button>
+
+          <button class="music-play-btn" id="musicPlayBtn" aria-label="Play">
+            ▶
+          </button>
+
+          <button class="music-control-btn" id="nextSongBtn" aria-label="Next song">
+            ⏭
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- DAFTAR LAGU -->
+      <div class="playlist-list" id="playlistList">
+
+        <div class="playlist-item active" data-song="0">
+
+          <div class="song-number">01</div>
+
+          <div class="song-info">
+            <div class="song-name">
+              Shape Of My Heart
+            </div>
+
+            <div class="song-artist">
+              Backstreet Boys
+            </div>
+          </div>
+
+          <div class="song-status">
+            ♪
+          </div>
+
+        </div>
+
+
+        <div class="playlist-item" data-song="1">
+
+          <div class="song-number">02</div>
+
+          <div class="song-info">
+            <div class="song-name">
+              My Love
+            </div>
+
+            <div class="song-artist">
+              Westlife
+            </div>
+          </div>
+
+          <div class="song-status">
+            ♫
+          </div>
+
+        </div>
+
+
+        <div class="playlist-item" data-song="2">
+
+          <div class="song-number">03</div>
+
+          <div class="song-info">
+            <div class="song-name">
+              Sayap Pelindungmu
+            </div>
+
+            <div class="song-artist">
+              TheOvertunes
+            </div>
+          </div>
+
+          <div class="song-status">
+            ♫
+          </div>
+
+        </div>
+
+        <div class="playlist-item active" data-song="3">
+
+          <div class="song-number">04</div>
+
+          <div class="song-info">
+            <div class="song-name">
+              Jatuh Suka
+            </div>
+
+            <div class="song-artist">
+              Tulus
+            </div>
+          </div>
+
+          <div class="song-status">
+            ♪
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- BUTTON MENUJU BIRTHDAY WISHES -->
+      <button class="birthday-next-btn" id="birthdayNextBtn">
+        ♡ Birthday Wishes
+      </button>
+
+    </div>
+  </div>
+
+
+  </div>
+
+  <!-- ================= PAGE 7 : BIRTHDAY WISHES ================= -->
+
+  <div class="page7" id="page7">
+
+    <div class="page-fx" id="page7Stars"></div>
+    <div class="page-fx" id="page7Hearts"></div>
+
+    <div class="birthday-inner">
+
+      <div class="birthday-card">
+
+        <div class="birthday-sparkle">✦</div>
+
+        <div class="birthday-eyebrow">
+          A LITTLE MESSAGE FOR YOU
+        </div>
+
+        <h1 class="birthday-title">
+          Birthday Wishes
+        </h1>
+
+        <div class="birthday-line"></div>
+
+        <p class="birthday-greeting">
+          Happy Birthday, my love
+          <span>♡</span>
+        </p>
+
+        <div class="birthday-message">
+
+          <p>
+            I wish you happiness, good health, success,
+            and endless blessings in this new chapter
+            of your life.
+          </p>
+
+          <p>
+            May all your dreams come true, may your days
+            be filled with beautiful moments, and may your
+            heart always be surrounded by people who love
+            and appreciate you.
+          </p>
+
+          <p>
+            Thank you for being such a wonderful part of
+            my life. I hope this year brings you everything
+            you've been wishing for.
+          </p>
+
+          <p class="birthday-closing">
+            Happy birthday, my love.
+            <br>
+            Keep smiling and keep shining.
+            <span>♡</span>
+          </p>
+
+        </div>
+
+        <div class="birthday-heart">
+          ♡
+        </div>
+
+        <div class="birthday-signature">
+          With all my love
+        </div>
+
+        <div class="birthday-date">
+          ✦ TODAY IS YOUR SPECIAL DAY ✦
+        </div>
+
+      </div>
+
+      <!-- BUTTON MENUJU PAGE 8 -->
+      <button class="birthday-next-btn one-more-btn" id="oneMoreBtn">
+        ♡ One More Thing
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- ================= PAGE 8 : FINAL BIRTHDAY REVEAL ================= -->
+  <div class="page8" id="page8">
+    <div class="page-fx" id="page8Stars"></div>
+    <div class="page-fx" id="page8Hearts"></div>
+
+    <div class="final-message">
+      <div class="final-typing" id="finalTyping">
+        <span class="typing-text"></span><span class="cursor"></span>
+      </div>
+
+      <p class="final-subtitle" id="finalSubtitle">
+        Thank you for being part of my life.<br>
+        I hope this little gift can make your special day even more beautiful.
+      </p>
+
+      <div class="final-signature" id="finalSignature">
+        Forever yours. <span class="final-heart">♥</span>
+      </div>
+    </div>
+
+    <button class="final-replay-btn" id="finalReplayBtn">
+      ↻ Replay from start
+    </button>
+  </div>
+
+
+  <script>
+    // ---------- Intro Stars ----------
+    const introStars = document.getElementById("introStars");
+
+    for (let i = 0; i < 80; i++) {
+      const star = document.createElement("div");
+      star.style.position = "absolute";
+      star.style.width = "2px";
+      star.style.height = "2px";
+      star.style.borderRadius = "50%";
+      star.style.background = "#fff";
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
+      star.style.opacity = Math.random();
+      star.style.animation = `twinkle ${2 + Math.random() * 3}s infinite`;
+      introStars.appendChild(star);
+    }
+
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
+      const heartColors = ['#F2A9C0', '#E8C87E', '#FBDCE9'];
+      const glyphs = ['♥', '✦'];
+      heart.textContent = glyphs[Math.random() < 0.8 ? 0 : 1];
+      heart.style.color = heartColors[Math.floor(Math.random() * heartColors.length)];
+      heart.style.left = Math.random() * 100 + "%";
+      heart.style.fontSize = (14 + Math.random() * 18) + "px";
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }, 600);
+
+    // ---------- Background music ----------
+    const bgMusic = document.getElementById('bgMusic');
+    bgMusic.volume = 0.2;
+
+    // ---------- Starfield generation ----------
+    const starsWrap = document.getElementById('stars');
+    const STAR_COUNT = 60;
+    for (let i = 0; i < STAR_COUNT; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      const size = Math.random() * 2 + 1;
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 70 + '%';
+      s.style.animationDelay = (Math.random() * 3.5) + 's';
+      s.style.animationDuration = (2.5 + Math.random() * 3) + 's';
+      starsWrap.appendChild(s);
+    }
+
+    // ---------- Occasional shooting star ----------
+    const shootingWrap = document.getElementById('shootingStars');
+    function spawnShootingStar() {
+      const el = document.createElement('div');
+      el.className = 'shooting-star';
+      el.style.top = (5 + Math.random() * 30) + '%';
+      el.style.right = (Math.random() * 30) + '%';
+      el.style.animation = 'shoot 2.4s ease-out forwards';
+      shootingWrap.appendChild(el);
+      setTimeout(() => el.remove(), 2500);
+    }
+    setInterval(spawnShootingStar, 4200);
+    setTimeout(spawnShootingStar, 900);
+
+    // ---------- Rising sparks ----------
+    const driftWrap = document.getElementById('drift');
+    const SPARK_COUNT = 14;
+    for (let i = 0; i < SPARK_COUNT; i++) {
+      const p = document.createElement('div');
+      p.className = 'spark';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (6 + Math.random() * 6) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      driftWrap.appendChild(p);
+    }
+
+    // ---------- Countdown ----------
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    const footerNote = document.getElementById('footerNote');
+    const revealBtn = document.getElementById('revealBtn');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tickNum(el, value) {
+      if (el.textContent !== value) {
+        el.textContent = value;
+        el.classList.remove('tick');
+        void el.offsetWidth;
+        el.classList.add('tick');
+      }
+    }
+
+    let targetDate;
+    let timer;
+
+    function tick() {
+      const now = new Date();
+      const diff = targetDate.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        tickNum(daysEl, '00');
+        tickNum(hoursEl, '00');
+        tickNum(minutesEl, '00');
+        tickNum(secondsEl, '00');
+        footerNote.textContent = 'Waktunya sudah tiba';
+        revealBtn.disabled = false;
+        revealBtn.classList.add('ready');
+        revealBtn.innerHTML = '<span class="btn-deco">✨</span> Open Her Gift <span class="btn-deco heart-deco">💖</span>';
+        clearInterval(timer);
+        return;
+      }
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      tickNum(daysEl, pad(d));
+      tickNum(hoursEl, pad(h));
+      tickNum(minutesEl, pad(m));
+      tickNum(secondsEl, pad(s));
+
+      if (diff > 6000) {
+        footerNote.textContent = '';
+      } else if (diff > 2000) {
+        footerNote.textContent = 'Beberapa detik lagi...';
+      } else {
+        footerNote.textContent = 'Hampir sampai...';
+      }
+    }
+
+    // ---------- Sparkle burst on reveal button ----------
+    function spawnBtnSparkle(btn) {
+      const icons = ['✨', '⭐', '💖', '💫'];
+      const rect = btn.getBoundingClientRect();
+      const sparkle = document.createElement('div');
+      sparkle.className = 'btn-sparkle';
+      sparkle.textContent = icons[Math.floor(Math.random() * icons.length)];
+      const startX = Math.random() * rect.width;
+      const startY = Math.random() * rect.height;
+      const dx = (Math.random() - 0.5) * 60;
+      const dy = -20 - Math.random() * 30;
+      sparkle.style.left = startX + 'px';
+      sparkle.style.top = startY + 'px';
+      sparkle.style.setProperty('--dx', dx + 'px');
+      sparkle.style.setProperty('--dy', dy + 'px');
+      btn.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 800);
+    }
+
+    let sparkleInterval = null;
+    revealBtn.addEventListener('mouseenter', () => {
+      if (!revealBtn.classList.contains('ready')) return;
+      sparkleInterval = setInterval(() => spawnBtnSparkle(revealBtn), 160);
+    });
+    revealBtn.addEventListener('mouseleave', () => {
+      clearInterval(sparkleInterval);
+    });
+    revealBtn.addEventListener('touchstart', () => {
+      if (!revealBtn.classList.contains('ready')) return;
+      for (let i = 0; i < 6; i++) setTimeout(() => spawnBtnSparkle(revealBtn), i * 90);
+    });
+
+    // ---------- Intro screen ----------
+    const introScreen = document.getElementById('introScreen');
+    const startBtn = document.getElementById('startBtn');
+    const typingName = document.getElementById('typingName');
+    const fullName = "Kheisya Ledyka br. Karo";
+    const cursorSpan = typingName.querySelector('.cursor');
+
+    let typingIndex = 0;
+    function typeWriter() {
+      if (typingIndex < fullName.length) {
+        cursorSpan.insertAdjacentText('beforebegin', fullName.charAt(typingIndex));
+        typingIndex++;
+        setTimeout(typeWriter, 120);
+      }
+    }
+    typeWriter();
+
+    const stage = document.getElementById('stage');
+    startBtn.addEventListener('click', async () => {
+      try { await bgMusic.play(); } catch (e) { console.log(e); }
+
+      stage.style.display = "block";
+      introScreen.style.transition = "opacity 1s ease";
+      introScreen.style.opacity = "0";
+      setTimeout(() => introScreen.remove(), 1000);
+
+      targetDate = new Date(2026, 7, 15, 0, 0, 0);
+      tick();
+      timer = setInterval(tick, 1000);
+    });
+
+    // ---------- Page background FX ----------
+    function createPageStars(container, count) {
+      for (let i = 0; i < count; i++) {
+        const useSparkle = Math.random() < 0.35;
+        const el = document.createElement('div');
+        if (useSparkle) {
+          el.className = 'sparkle-star';
+          el.textContent = ['✦', '✧', '⋆'][Math.floor(Math.random() * 3)];
+          el.style.fontSize = (10 + Math.random() * 11) + 'px';
+        } else {
+          el.className = 'page-star';
+          const size = Math.random() * 2.6 + 1.4;
+          el.style.width = size + 'px';
+          el.style.height = size + 'px';
+        }
+        el.style.left = Math.random() * 100 + '%';
+        el.style.top = Math.random() * 92 + '%';
+        el.style.animationDelay = (Math.random() * 3.5) + 's';
+        el.style.animationDuration = (2.2 + Math.random() * 3) + 's';
+        container.appendChild(el);
+      }
+    }
+
+    function spawnPageHeart(container) {
+      const icons = ['❤', '💖', '💕'];
+      const heart = document.createElement('div');
+      heart.className = 'page-heart';
+      heart.textContent = icons[Math.floor(Math.random() * icons.length)];
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.fontSize = (16 + Math.random() * 20) + 'px';
+      const duration = 5 + Math.random() * 3;
+      heart.style.animationDuration = duration + 's';
+      container.appendChild(heart);
+      setTimeout(() => heart.remove(), duration * 1000 + 200);
+    }
+
+    const pageFxState = {};
+    function activatePageFX(pageId) {
+      const starsEl = document.getElementById(pageId + 'Stars');
+      const heartsEl = document.getElementById(pageId + 'Hearts');
+      if (!starsEl || !heartsEl) return;
+      if (!pageFxState[pageId]) pageFxState[pageId] = {};
+      const state = pageFxState[pageId];
+      if (!state.starsInit) {
+        createPageStars(starsEl, 46);
+        state.starsInit = true;
+      }
+      if (!state.heartInterval) {
+        state.heartInterval = setInterval(() => spawnPageHeart(heartsEl), 600);
+      }
+    }
+
+    // ---------- PAGE 1 -> PAGE 2 ----------
+    const page2 = document.getElementById('page2');
+    const page3 = document.getElementById('page3');
+    const page4 = document.getElementById('page4');
+    const page5 = document.getElementById('page5');
+    const page6 = document.getElementById('page6');
+    const page7 = document.getElementById('page7');
+    const page8 = document.getElementById('page8');
+    const content = document.querySelector('.content');
+    const featureWrap = document.querySelector('.feature-wrap');
+    const giftScene = document.getElementById('giftScene');
+    const flowerBurstLayer = document.getElementById('flowerBurstLayer');
+    const page2Sub = document.getElementById('page2Sub');
+    const tapHint = document.getElementById('tapHint');
+
+    revealBtn.addEventListener('click', () => {
+      if (!revealBtn.classList.contains('ready')) return;
+
+      content.style.transition = 'opacity .6s ease';
+      featureWrap.style.transition = 'opacity .6s ease';
+      content.style.opacity = '0';
+      featureWrap.style.opacity = '0';
+
+      setTimeout(() => {
+        content.style.display = 'none';
+        featureWrap.style.display = 'none';
+        page2.classList.add('visible');
+        activatePageFX('page2');
+      }, 500);
+    });
+
+    let giftOpened = false;
+
+    // ---------- GIFT OPENING -> HIGH DENSITY BOTANICAL FLOWER BUBBLES -> CURTAIN-STYLE EXIT ----------
+    giftScene.addEventListener('click', () => {
+      if (giftOpened) return;
+      giftOpened = true;
+
+      // 1. Open gift lid
+      giftScene.classList.add('opened');
+      page2Sub.textContent = "Bunga-bunga bermekaran untukmu! 🌸";
+      tapHint.style.display = "none";
+
+      // 2. Spawn dense circular botanical flower bubbles bursting across the screen
+      spawnBotanicalFlowerBubbles();
+    });
+
+    function spawnBotanicalFlowerBubbles() {
+      flowerBurstLayer.innerHTML = '';
+      const rect = giftScene.getBoundingClientRect();
+      const startX = rect.left + rect.width / 2;
+      const startY = rect.top + rect.height * 0.45;
+
+      const winWidth = window.innerWidth;
+      const winHeight = window.innerHeight;
+      const centerX = winWidth / 2;
+      const maxDist = Math.hypot(winWidth, winHeight) / 2;
+
+      // Realistic rose assets matching the user's reference images
+      const flowerImages = [
+        'pink_rose.jpg',
+        'white_rose.jpg',
+        'peach_rose.jpg',
+        'pink_cluster.jpg',
+        'flowers.jpg'
+      ];
+
+      // Array of circle sizes (from small to extra-large)
+      const sizes = [110, 120, 100, 130, 115, 140, 150, 120, 125, 155, 145];
+      const avgSize = sizes.reduce((a, b) => a + b, 0) / sizes.length;
+
+      // ---- Full-coverage grid ----
+      // Pure random placement can leave visible gaps depending on screen
+      // size/ratio. Instead, tile the whole viewport with a grid of cells
+      // slightly smaller than a flower's diameter — since each circle is
+      // bigger than its own cell, neighbouring flowers always overlap and
+      // no bare patch of background can show through. A little random
+      // jitter per cell keeps it from looking like a mechanical grid.
+      const cellSize = avgSize * 0.72;
+      const cols = Math.ceil(winWidth / cellSize) + 2;   // +2 = a little overrun past each edge
+      const rows = Math.ceil(winHeight / cellSize) + 2;
+      const gridOriginX = -cellSize;
+      const gridOriginY = -cellSize;
+      const BUBBLE_COUNT = cols * rows;
+      const bubbleElements = [];
+
+      // Timing constants (ms), all measured from the moment the gift is clicked
+      const POP_SPREAD = 1400;         // total window over which flowers wave in
+      const POP_SETTLE = 1500;         // matches the CSS transform transition duration
+      const HOLD_DURATION = 2400;      // how long the screen stays covered in flowers
+      const PARTING_START = POP_SPREAD + POP_SETTLE + HOLD_DURATION;
+      const PARTING_DURATION = 3200;   // must match the CSS transition duration above
+      const PARTING_STAGGER_MAX = 500; // spreads the curtain sweep so it reads like fabric, not a switch
+      const CLEANUP_BUFFER = 400;      // extra time after the animation to be safe
+
+      // Preload every flower image once before spawning anything, so the
+      // very first bubbles don't pop in blank/late while the browser is
+      // still fetching the picture — that flash-in is the other common
+      // cause of flowers looking like they "appear suddenly".
+      const preloadPromises = flowerImages.map(src => new Promise(resolve => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = resolve;
+        img.src = src;
+      }));
+
+      Promise.race([
+        Promise.all(preloadPromises),
+        new Promise(resolve => setTimeout(resolve, 350)) // safety timeout, never block forever
+      ]).then(() => {
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'flower-circle';
+
+            const size = sizes[Math.floor(Math.random() * sizes.length)];
+            const flowerImg = flowerImages[Math.floor(Math.random() * flowerImages.length)];
+
+            // Cell centre plus jitter — stays inside the cell enough that
+            // circles keep overlapping their neighbours (no seams), but
+            // still feels randomly scattered rather than gridded.
+            const jitterX = (Math.random() - 0.5) * cellSize * 0.55;
+            const jitterY = (Math.random() - 0.5) * cellSize * 0.55;
+            const destX = gridOriginX + c * cellSize + cellSize / 2 + jitterX;
+            const destY = gridOriginY + r * cellSize + cellSize / 2 + jitterY;
+
+            const tx = destX - startX;
+            const ty = destY - startY;
+            const scale = 0.9 + Math.random() * 0.45;
+            const rot = (Math.random() - 0.5) * 60;
+
+            bubble.style.setProperty('--size', size + 'px');
+            bubble.style.setProperty('--start-x', startX + 'px');
+            bubble.style.setProperty('--start-y', startY + 'px');
+            bubble.style.setProperty('--tx', tx + 'px');
+            bubble.style.setProperty('--ty', ty + 'px');
+            bubble.style.setProperty('--scale', scale);
+            bubble.style.setProperty('--rot', rot + 'deg');
+            bubble.style.setProperty('--flower-img', `url('${flowerImg}')`);
+            bubble.style.setProperty('--sway-x', (Math.random() * 16 - 8) + 'px');
+            bubble.style.setProperty('--sway-y', (Math.random() * 16 - 8) + 'px');
+            bubble.style.setProperty('--sway-dur', (3.5 + Math.random() * 3) + 's');
+
+            flowerBurstLayer.appendChild(bubble);
+            // Remember final on-screen X so we know which curtain panel (left/right) it belongs to
+            bubbleElements.push({ el: bubble, destX: destX });
+
+            // Wave-like reveal: flowers closer to the gift box bloom first,
+            // then the wave ripples outward, with a touch of randomness so
+            // it never looks mechanical.
+            const dist = Math.hypot(destX - startX, destY - startY);
+            const wavePortion = Math.min(dist / maxDist, 1) * POP_SPREAD * 0.7;
+            const delay = wavePortion + Math.random() * (POP_SPREAD * 0.3);
+
+            setTimeout(() => {
+              bubble.classList.add('popped');
+            }, delay);
+
+            setTimeout(() => {
+              bubble.classList.add('swaying');
+            }, delay + POP_SETTLE);
+          }
+        }
+
+        // 3. Switch page 2 to page 3 behind the flower cover, once the
+        // wave has had a chance to fill the screen rather than the
+        // instant the click happens.
+        setTimeout(() => {
+          page2.style.transition = 'opacity 0.6s ease';
+          page2.style.opacity = '0';
+
+          setTimeout(() => {
+            page2.classList.remove('visible');
+            page3.classList.add('visible');
+            activatePageFX('page3');
+          }, 300);
+
+        }, POP_SPREAD * 0.6);
+
+        // 4. CURTAIN OPENING: flowers on the left half sweep off to the
+        //    left, flowers on the right half sweep off to the right —
+        //    like two stage-curtain panels. Flowers nearer the centre
+        //    lead, with the outer edges following a beat later, so the
+        //    sweep reads as one continuous motion instead of a hard cut.
+        setTimeout(() => {
+          bubbleElements.forEach((item) => {
+            const staggerRatio = Math.min(Math.abs(item.destX - centerX) / (winWidth / 2), 1);
+            const itemDelay = staggerRatio * PARTING_STAGGER_MAX;
+
+            setTimeout(() => {
+              item.el.classList.remove('swaying');
+              void item.el.offsetWidth;
+
+              if (item.destX < centerX) {
+                item.el.classList.add('parting-left');
+              } else {
+                item.el.classList.add('parting-right');
+              }
+            }, itemDelay);
+          });
+        }, PARTING_START);
+
+        // Clean up the layer only AFTER the curtain animation has fully
+        // finished, so the parting motion is actually visible instead of
+        // the flowers vanishing abruptly mid-animation.
+        setTimeout(() => {
+          flowerBurstLayer.innerHTML = '';
+        }, PARTING_START + PARTING_STAGGER_MAX + PARTING_DURATION + CLEANUP_BUFFER);
+      });
+    }
+
+    // ---------- PAGE 3 -> PAGE 4 ----------
+    const readBtn = document.getElementById('readBtn');
+    readBtn.addEventListener('click', () => {
+      page3.style.transition = 'opacity .8s ease';
+      page3.style.opacity = '0';
+
+      setTimeout(() => {
+        page3.classList.remove('visible');
+        page4.classList.add('visible');
+        activatePageFX('page4');
+
+        // Sembunyikan segel
+        sealStage.classList.add('hidden');
+
+        // Langsung tampilkan surat
+        letterPaperWrap.classList.add('visible');
+
+        // Animasi teks surat
+        const paragraphs = [
+          document.getElementById('lp0'),
+          document.getElementById('lp1'),
+          document.getElementById('lp2'),
+          document.getElementById('lp3'),
+          document.getElementById('lp4'),
+          document.getElementById('lp5')
+        ];
+
+        paragraphs.forEach((p, idx) => {
+          setTimeout(() => {
+            if (p) p.classList.add('show');
+          }, idx * 650);
+        });
+
+        setTimeout(() => {
+          page4Footer.classList.add('show');
+        }, paragraphs.length * 650 + 200);
+
+      }, 500);
+    });
+
+    // ---------- PAGE 4 WAX SEAL & LETTER ----------
+    const waxSeal = document.getElementById('waxSeal');
+    const sealStage = document.getElementById('sealStage');
+    const letterPaperWrap = document.getElementById('letterPaperWrap');
+    const page4Footer = document.getElementById('page4Footer');
+
+    waxSeal.addEventListener('click', () => {
+      waxSeal.classList.add('cracking');
+      setTimeout(() => {
+        sealStage.classList.add('hidden');
+        letterPaperWrap.classList.add('visible');
+
+        // Reveal letter text step-by-step
+        const paragraphs = [
+          document.getElementById('lp0'),
+          document.getElementById('lp1'),
+          document.getElementById('lp2'),
+          document.getElementById('lp3'),
+          document.getElementById('lp4'),
+          document.getElementById('lp5'),
+          document.getElementById('lp6')
+        ];
+
+        paragraphs.forEach((p, idx) => {
+          setTimeout(() => {
+            if (p) p.classList.add('show');
+          }, idx * 650);
+        });
+
+        setTimeout(() => {
+          page4Footer.classList.add('show');
+        }, paragraphs.length * 650 + 200);
+
+      }, 600);
+    });
+
+    // ---------- REPLAY BUTTON ----------
+    const replayBtn = document.getElementById('replayBtn');
+    replayBtn.addEventListener('click', () => {
+
+      page4.style.opacity = '0';
+
+      setTimeout(() => {
+
+        page4.classList.remove('visible');
+
+        page5.classList.add('visible');
+
+        activatePageFX('page5');
+
+      }, 500);
+
+    });
+
+    // ======================================================
+    // PAGE 5 -> PAGE 6 : SPECIAL PLAYLIST
+    // ======================================================
+
+    const playlistNextBtn =
+      document.getElementById('playlistNextBtn');
+
+    playlistNextBtn.addEventListener('click', () => {
+
+      // JANGAN hentikan bgMusic di sini.
+      // Lagu dari Open My Heart tetap berjalan.
+
+      page5.style.transition = 'opacity .7s ease';
+      page5.style.opacity = '0';
+
+      setTimeout(() => {
+
+        page5.classList.remove('visible');
+
+        page6.classList.add('visible');
+        page6.style.opacity = '0';
+
+        requestAnimationFrame(() => {
+          page6.style.transition = 'opacity .7s ease';
+          page6.style.opacity = '1';
+        });
+
+        activatePageFX('page6');
+
+      }, 500);
+    });
+
+    // ======================================================
+    // PAGE 6 -> PAGE 7 : BIRTHDAY WISHES
+    // ======================================================
+
+    const birthdayNextBtn =
+      document.getElementById('birthdayNextBtn');
+
+    birthdayNextBtn.addEventListener('click', () => {
+
+      // JANGAN hentikan lagu playlist.
+      // Lagu yang dipilih user tetap berjalan.
+
+      page6.style.transition = 'opacity .7s ease';
+      page6.style.opacity = '0';
+
+      setTimeout(() => {
+
+        page6.classList.remove('visible');
+
+        page7.classList.add('visible');
+
+        page7.style.opacity = '0';
+
+        requestAnimationFrame(() => {
+
+          page7.style.transition = 'opacity .8s ease';
+          page7.style.opacity = '1';
+
+        });
+
+        activatePageFX('page7');
+
+      }, 600);
+
+    });
+
+
+    // ======================================================
+    // PAGE 7 -> PAGE 8 : FINAL BIRTHDAY REVEAL
+    // ======================================================
+
+    const oneMoreBtn = document.getElementById('oneMoreBtn');
+    const finalReplayBtn = document.getElementById('finalReplayBtn');
+    const finalTypingText = document.querySelector('#finalTyping .typing-text');
+    const finalSubtitle = document.getElementById('finalSubtitle');
+    const finalSignature = document.getElementById('finalSignature');
+
+    let finalTypingRun = 0;
+
+    function wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function typeFinalText(text, speed = 95) {
+      finalTypingText.textContent = '';
+
+      for (const char of text) {
+        finalTypingText.textContent += char;
+        await wait(speed);
+      }
+    }
+
+    async function eraseFinalText(speed = 55) {
+      const current = finalTypingText.textContent;
+
+      for (let i = current.length; i > 0; i--) {
+        finalTypingText.textContent = current.slice(0, i - 1);
+        await wait(speed);
+      }
+    }
+
+    async function playFinalTypingSequence() {
+      const runId = ++finalTypingRun;
+
+      finalTypingText.textContent = '';
+      finalSubtitle.classList.remove('show');
+      finalSignature.classList.remove('show');
+      finalReplayBtn.classList.remove('show');
+
+      const phrases = [
+        "Happy Birthday",
+        "With All My Love",
+        "Always & Forever"
+      ];
+
+      for (let i = 0; i < phrases.length; i++) {
+        if (runId !== finalTypingRun) return;
+
+        await typeFinalText(phrases[i], 100);
+        await wait(i === phrases.length - 1 ? 1200 : 900);
+
+        if (i < phrases.length - 1) {
+          await eraseFinalText(55);
+          await wait(350);
+        }
+      }
+
+      if (runId !== finalTypingRun) return;
+
+      finalSubtitle.classList.add('show');
+      await wait(500);
+      finalSignature.classList.add('show');
+      await wait(900);
+      finalReplayBtn.classList.add('show');
+    }
+
+    oneMoreBtn.addEventListener('click', () => {
+      page7.style.transition = 'opacity .8s ease';
+      page7.style.opacity = '0';
+
+      setTimeout(() => {
+        page7.classList.remove('visible');
+
+        page8.classList.add('visible');
+        page8.style.opacity = '0';
+
+        requestAnimationFrame(() => {
+          page8.style.transition = 'opacity .9s ease';
+          page8.style.opacity = '1';
+        });
+
+        activatePageFX('page8');
+        playFinalTypingSequence();
+      }, 650);
+    });
+
+    // Kembali ke halaman awal dengan memulai ulang seluruh halaman.
+    finalReplayBtn.addEventListener('click', () => {
+      finalTypingRun++;
+      window.location.reload();
+    });
+
+
+    // ======================================================
+    // SPECIAL PLAYLIST PLAYER
+    // ======================================================
+
+    const playlistSongs = [
+
+      {
+        title: "Shape Of My Heart",
+        artist: "Backstreet Boys",
+        src: "shape-of-my-heart.mp3"
+      },
+
+      {
+        title: "My Love",
+        artist: "Westlife",
+        src: "westlife-my-love.mp3"
+      },
+
+      {
+        title: "Sayap Pelindungmu",
+        artist: "The Overtunes",
+        src: "theovertunes-sayap-pelindungmu.mp3"
+      },
+
+      {
+        title: "Jatuh Suka",
+        artist: "Tulus",
+        src: "TULUS - Jatuh Suka.mp3"
+      }
+
+    ];
+
+
+    // Membuat audio element untuk setiap lagu
+    const playlistAudios = playlistSongs.map((song) => {
+
+      const audio = new Audio(song.src);
+
+      audio.preload = "metadata";
+
+      audio.volume = 0.8;
+
+      return audio;
+
+    });
+
+
+    let currentSongIndex = 0;
+
+
+    // Element player
+    const albumArt =
+      document.getElementById('albumArt');
+
+    const currentSongTitle =
+      document.getElementById('currentSongTitle');
+
+    const currentSongArtist =
+      document.getElementById('currentSongArtist');
+
+    const musicPlayBtn =
+      document.getElementById('musicPlayBtn');
+
+    const previousSongBtn =
+      document.getElementById('previousSongBtn');
+
+    const nextSongBtn =
+      document.getElementById('nextSongBtn');
+
+    const musicProgress =
+      document.getElementById('musicProgress');
+
+    const currentTimeEl =
+      document.getElementById('currentTime');
+
+    const durationEl =
+      document.getElementById('duration');
+
+    const playlistItems =
+      document.querySelectorAll('.playlist-item');
+
+
+    // ------------------------------------------------------
+    // Format waktu
+    // ------------------------------------------------------
+
+    function formatTime(seconds) {
+
+      if (!Number.isFinite(seconds)) {
+        return "0:00";
+      }
+
+      const minutes = Math.floor(seconds / 60);
+
+      const secs =
+        Math.floor(seconds % 60)
+          .toString()
+          .padStart(2, '0');
+
+      return `${minutes}:${secs}`;
+    }
+
+
+    // ------------------------------------------------------
+    // Hentikan SEMUA lagu playlist
+    // ------------------------------------------------------
+
+    function stopAllPlaylistSongs() {
+
+      playlistAudios.forEach((audio) => {
+
+        audio.pause();
+
+        audio.currentTime = 0;
+
+      });
+
+      musicPlayBtn.textContent = "▶";
+
+      albumArt.classList.remove('playing');
+    }
+
+
+    // ------------------------------------------------------
+    // Update informasi lagu
+    // ------------------------------------------------------
+
+    function updatePlaylistUI() {
+
+      const song =
+        playlistSongs[currentSongIndex];
+
+      currentSongTitle.textContent =
+        song.title;
+
+      currentSongArtist.textContent =
+        song.artist;
+
+
+      playlistItems.forEach((item, index) => {
+
+        item.classList.toggle(
+          'active',
+          index === currentSongIndex
+        );
+
+        const status =
+          item.querySelector('.song-status');
+
+        if (index === currentSongIndex) {
+          status.textContent = "♪";
+        } else {
+          status.textContent = "♫";
+        }
+
+      });
+
+    }
+
+
+    // ------------------------------------------------------
+    // Memilih lagu
+    // ------------------------------------------------------
+
+    function selectSong(index, autoPlay = true) {
+
+      if (
+        index < 0 ||
+        index >= playlistAudios.length
+      ) {
+        return;
+      }
+
+      // ==========================================
+      // USER MEMILIH LAGU PLAYLIST
+      // ==========================================
+
+      // Matikan lagu dari Open My Heart
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+
+      // Matikan lagu playlist lainnya
+      stopAllPlaylistSongs();
+
+      currentSongIndex = index;
+
+      const audio =
+        playlistAudios[currentSongIndex];
+
+      audio.currentTime = 0;
+
+      updatePlaylistUI();
+
+      if (autoPlay) {
+
+        audio.play()
+          .then(() => {
+
+            musicPlayBtn.textContent = "❚❚";
+
+            albumArt.classList.add('playing');
+
+          })
+          .catch((error) => {
+
+            console.log(
+              "Audio belum dapat diputar:",
+              error
+            );
+
+          });
+
+      }
+    }
+
+
+    // ------------------------------------------------------
+    // Play / Pause
+    // ------------------------------------------------------
+
+    musicPlayBtn.addEventListener('click', () => {
+
+      const audio =
+        playlistAudios[currentSongIndex];
+
+
+      // Kalau sedang hidup -> pause
+      if (!audio.paused) {
+
+        audio.pause();
+
+        musicPlayBtn.textContent = "▶";
+
+        albumArt.classList.remove('playing');
+
+        return;
+
+      }
+
+
+      // Pastikan lagu lain mati
+      playlistAudios.forEach((otherAudio, index) => {
+
+        if (index !== currentSongIndex) {
+
+          otherAudio.pause();
+
+        }
+
+      });
+
+
+      audio.play()
+        .then(() => {
+
+          musicPlayBtn.textContent = "❚❚";
+
+          albumArt.classList.add('playing');
+
+        })
+        .catch((error) => {
+
+          console.log(
+            "Tidak dapat memutar lagu:",
+            error
+          );
+
+        });
+
+    });
+
+
+    // ------------------------------------------------------
+    // Klik item playlist
+    // ------------------------------------------------------
+
+    playlistItems.forEach((item) => {
+
+      item.addEventListener('click', () => {
+
+        const index =
+          Number(item.dataset.song);
+
+        // Ini akan otomatis:
+        // 1. mematikan lagu sebelumnya
+        // 2. mematikan background music
+        // 3. memainkan lagu yang diklik
+
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+
+        selectSong(index, true);
+
+      });
+
+    });
+
+
+    // ------------------------------------------------------
+    // Previous
+    // ------------------------------------------------------
+
+    previousSongBtn.addEventListener('click', () => {
+
+      let newIndex =
+        currentSongIndex - 1;
+
+      if (newIndex < 0) {
+        newIndex =
+          playlistSongs.length - 1;
+      }
+
+
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+
+      selectSong(newIndex, true);
+
+    });
+
+
+    // ------------------------------------------------------
+    // Next
+    // ------------------------------------------------------
+
+    nextSongBtn.addEventListener('click', () => {
+
+      let newIndex =
+        currentSongIndex + 1;
+
+      if (
+        newIndex >= playlistSongs.length
+      ) {
+        newIndex = 0;
+      }
+
+
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+
+      selectSong(newIndex, true);
+
+    });
+
+
+    // ------------------------------------------------------
+    // Progress bar
+    // ------------------------------------------------------
+
+    playlistAudios.forEach((audio, index) => {
+
+      audio.addEventListener('timeupdate', () => {
+
+        if (index !== currentSongIndex) {
+          return;
+        }
+
+
+        if (audio.duration) {
+
+          const progress =
+            (audio.currentTime / audio.duration) * 100;
+
+          musicProgress.value =
+            progress;
+
+        }
+
+
+        currentTimeEl.textContent =
+          formatTime(audio.currentTime);
+
+      });
+
+
+      audio.addEventListener('loadedmetadata', () => {
+
+        if (index !== currentSongIndex) {
+          return;
+        }
+
+        durationEl.textContent =
+          formatTime(audio.duration);
+
+      });
+
+
+      // Kalau lagu selesai:
+      // otomatis lanjut ke lagu berikutnya.
+      audio.addEventListener('ended', () => {
+
+        let nextIndex =
+          currentSongIndex + 1;
+
+        if (
+          nextIndex >= playlistSongs.length
+        ) {
+          nextIndex = 0;
+        }
+
+        selectSong(nextIndex, true);
+
+      });
+
+    });
+
+
+    // ------------------------------------------------------
+    // Klik progress bar
+    // ------------------------------------------------------
+
+    musicProgress.addEventListener('input', () => {
+
+      const audio =
+        playlistAudios[currentSongIndex];
+
+      if (!audio.duration) {
+        return;
+      }
+
+      audio.currentTime =
+        (musicProgress.value / 100)
+        * audio.duration;
+
+    });
+
+
+    // ------------------------------------------------------
+    // Kondisi awal
+    // ------------------------------------------------------
+
+    updatePlaylistUI();
+
+  </script>
+</body>
+
+</html>
